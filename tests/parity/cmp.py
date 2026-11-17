@@ -120,6 +120,7 @@ def norm(s):
     s = s.replace("work-n", "work-X").replace("work-k", "work-X")
     l = s.split("\n")
     l[0] = re.sub(r"zu [0-9]+\.[0-9]+\.[0-9]+", "", l[0].replace("GNU nano 9.3", ""))
+    l[0] = re.sub(r"^.*/work-X/", "WORK/", l[0])
     s = "\n".join(l)
     l = s.split("\n"); l[0] = re.sub(r" +", " ", l[0]); s = "\n".join(l)
     s = re.sub(r"\bnano\b", "zu", s)

@@ -424,7 +424,7 @@ impl Term {
         if fd < 0 || unsafe { libc::tcgetattr(fd, &raw mut current) } != 0 {
             return None;
         }
-        let secret = secret_settings(&current, self.cooked.as_ref());
+        let secret = secret_settings(&current);
         unsafe {
             libc::tcsetattr(fd, libc::TCSANOW, &raw const secret);
         }
@@ -443,7 +443,7 @@ impl Term {
         {
             return;
         }
-        let secret = secret_settings(&current, self.cooked.as_ref());
+        let secret = secret_settings(&current);
         unsafe {
             libc::tcsetattr(fd, libc::TCSANOW, &raw const secret);
         }
@@ -452,13 +452,15 @@ impl Term {
         crate::crypto::raw_write(1, &off);
     }
 
-    pub fn end_secret_input(&mut self, before: Option<libc::termios>) {
+    pub fn end_secret_input(&mut self, before: Option<libc::termios>, discard: bool) {
         let fd = self.input_fd();
         if fd < 0 {
             return;
         }
-        unsafe {
-            libc::tcflush(fd, libc::TCIFLUSH);
+        if discard {
+            unsafe {
+                libc::tcflush(fd, libc::TCIFLUSH);
+            }
         }
         if let Some(settings) = before {
             unsafe {
@@ -1270,19 +1272,14 @@ pub fn focus_report(input: &[u8]) -> Option<bool> {
     }
 }
 
-fn secret_settings(raw: &libc::termios, cooked: Option<&libc::termios>) -> libc::termios {
+const fn secret_settings(raw: &libc::termios) -> libc::termios {
     let mut settings = *raw;
     settings.c_lflag |= libc::ICANON;
     settings.c_lflag &= !(libc::ECHO | libc::ECHONL | libc::ISIG | libc::IEXTEN);
     settings.c_iflag |= libc::ICRNL | libc::IUTF8 | libc::IMAXBEL;
     settings.c_iflag &= !(libc::INLCR | libc::IGNCR);
-    let erase = cooked.map_or(0x7F, |c| c.c_cc[libc::VERASE]);
-    settings.c_cc[libc::VERASE] = if erase == libc::_POSIX_VDISABLE {
-        0x7F
-    } else {
-        erase
-    };
-    settings.c_cc[libc::VKILL] = 0x15;
+    settings.c_cc[libc::VERASE] = libc::_POSIX_VDISABLE;
+    settings.c_cc[libc::VKILL] = libc::_POSIX_VDISABLE;
     settings.c_cc[libc::VEOF] = libc::_POSIX_VDISABLE;
     settings.c_cc[libc::VEOL] = 0x03;
     settings.c_cc[libc::VEOL2] = libc::_POSIX_VDISABLE;
@@ -1363,9 +1360,9 @@ mod tests {
         raw.c_iflag = libc::INLCR | libc::IGNCR;
         raw.c_lflag = libc::ECHO | libc::ECHONL | libc::ISIG | libc::IEXTEN;
         raw.c_oflag = 0;
-        let mut cooked = raw;
-        cooked.c_cc[libc::VERASE] = 0x08;
-        let secret = secret_settings(&raw, Some(&cooked));
+        raw.c_cc[libc::VERASE] = 0x08;
+        raw.c_cc[libc::VKILL] = 0x15;
+        let secret = secret_settings(&raw);
         assert_ne!(secret.c_lflag & libc::ICANON, 0);
         assert_eq!(
             secret.c_lflag & (libc::ECHO | libc::ECHONL | libc::ISIG | libc::IEXTEN),
@@ -1375,15 +1372,9 @@ mod tests {
         assert_ne!(secret.c_iflag & libc::ICRNL, 0);
         assert_ne!(secret.c_iflag & libc::IUTF8, 0);
         assert_eq!(secret.c_oflag, 0);
-        assert_eq!(secret.c_cc[libc::VERASE], 0x08);
-        assert_eq!(secret.c_cc[libc::VKILL], 0x15);
+        assert_eq!(secret.c_cc[libc::VERASE], libc::_POSIX_VDISABLE);
+        assert_eq!(secret.c_cc[libc::VKILL], libc::_POSIX_VDISABLE);
         assert_eq!(secret.c_cc[libc::VEOL], 0x03);
         assert_eq!(secret.c_cc[libc::VEOF], libc::_POSIX_VDISABLE);
-        cooked.c_cc[libc::VERASE] = libc::_POSIX_VDISABLE;
-        assert_eq!(
-            secret_settings(&raw, Some(&cooked)).c_cc[libc::VERASE],
-            0x7F
-        );
-        assert_eq!(secret_settings(&raw, None).c_cc[libc::VERASE], 0x7F);
     }
 }

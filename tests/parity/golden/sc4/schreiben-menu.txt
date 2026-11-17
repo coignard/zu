@@ -1,4 +1,4 @@
-.../-home-user/a7a5959f-7a1e-5374-a187-01a7d337d7ad/scratchpad/runs/work/work-X/
+WORK/
 ..          (höher)  bak         (Verz.)  bin.txt       95  B
 datei.txt      6 KB  dos.txt       18  B  lang.txt       8 KB
 ro.txt        10  B  zwei.txt      29  B

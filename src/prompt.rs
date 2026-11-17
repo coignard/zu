@@ -6,9 +6,9 @@ use zeroize::Zeroizing;
 use crate::chars::{char_length, is_zerowidth, step_left, step_right};
 use crate::curses::{Wait, Win};
 use crate::definitions::{
-    ALL, BLIND, CANCEL, END_OF_PASTE, Elem, Flag, Func, HIGHEST_POSITIVE, HistKind, KEY_MOUSE,
-    MEXECUTE, MGOTODIR, MINSERTFILE, MMAIN, MMOST, MPASSWORD, MWRITEFILE, MYESNO, Msg, NO,
-    START_OF_PASTE, THE_WINDOW_RESIZED, VISIBLE, YES,
+    ALL, BLIND, CANCEL, END_OF_PASTE, Elem, Flag, Func, HIGHEST_POSITIVE, HistKind, KEY_BACKSPACE,
+    KEY_ENTER, KEY_MOUSE, MEXECUTE, MGOTODIR, MINSERTFILE, MMAIN, MMOST, MPASSWORD, MWRITEFILE,
+    MYESNO, Msg, NO, START_OF_PASTE, THE_WINDOW_RESIZED, VISIBLE, YES,
 };
 use crate::global::Zu;
 use crate::search::RefreshFn;
@@ -610,44 +610,91 @@ impl Zu {
         self.term.settle();
     }
 
+    fn typed_ahead(&mut self, recorded: bool) -> Zeroizing<Vec<u8>> {
+        let mut bytes = Zeroizing::new(Vec::with_capacity(
+            self.key_buffer.len() * 6 + self.pending_input.len(),
+        ));
+        if recorded {
+            let keep = self
+                .macro_buffer
+                .len()
+                .saturating_sub(self.key_buffer.len());
+            self.macro_buffer[keep..].zeroize();
+            self.macro_buffer.truncate(keep);
+        }
+        while let Some(code) = self.pop_code() {
+            match code {
+                THE_WINDOW_RESIZED => {}
+                KEY_ENTER => bytes.push(b'\r'),
+                KEY_BACKSPACE => bytes.push(0x7F),
+                START_OF_PASTE => bytes.extend_from_slice(b"\x1B[200~"),
+                END_OF_PASTE => bytes.extend_from_slice(b"\x1B[201~"),
+                _ => bytes.push(u8::try_from(code).unwrap_or(0)),
+            }
+        }
+        bytes.extend_from_slice(&self.pending_input);
+        self.pending_input.zeroize();
+        bytes
+    }
+
+    fn absorb_secret(
+        &mut self,
+        reader: &mut SecretReader,
+        bytes: &[u8],
+        password: &mut Vec<u8>,
+    ) -> Typed {
+        let capacity = password.capacity();
+        let (typed, used) = reader.absorb(bytes, password);
+        if password.capacity() != capacity {
+            crate::crypto::lock_region(password.as_ptr(), password.capacity());
+        }
+        if std::mem::take(&mut reader.rejected) {
+            self.term.beep();
+        }
+        if let Some(focused) = reader.focus.take()
+            && self.term.reports_focus()
+        {
+            self.term.set_focus(focused);
+        }
+        if typed == Typed::Confirmed || (typed == Typed::Cancelled && !reader.pasting) {
+            self.pending_input.extend_from_slice(&bytes[used..]);
+        }
+        typed
+    }
+
     pub fn ask_for_password(&mut self, question: &str) -> Option<Zeroizing<Vec<u8>>> {
         let mut password: Zeroizing<Vec<u8>> = Zeroizing::new(Vec::with_capacity(256));
         crate::crypto::lock_region(password.as_ptr(), password.capacity());
         let saved_menu = self.currmenu;
         let was_recording = self.recording;
         self.recording = false;
-        self.clear_key_buffer();
-        self.pending_input.zeroize();
+        let mut early = self.typed_ahead(was_recording);
         self.show_password_keys();
         let before = self.term.begin_secret_input();
         let mut reader = SecretReader::default();
         let mut chunk = [0u8; 256];
         let result = loop {
-            self.check_signals();
-            if self.the_window_resized {
-                self.regenerate_screen();
-                self.show_password_keys();
-            }
-            self.term.keep_secret_input();
-            self.show_password_prompt(question);
-            if self.term.wait_for_input(Duration::from_millis(250)) != Wait::Ready {
-                continue;
-            }
-            let n = self.term.read_secret(&mut chunk);
-            let capacity = password.capacity();
-            let typed = reader.absorb(&chunk[..n], &mut password);
-            chunk.zeroize();
-            if password.capacity() != capacity {
-                crate::crypto::lock_region(password.as_ptr(), password.capacity());
-            }
-            if std::mem::take(&mut reader.rejected) {
-                self.term.beep();
-            }
-            if let Some(focused) = reader.focus.take()
-                && self.term.reports_focus()
-            {
-                self.term.set_focus(focused);
-            }
+            let typed = if early.is_empty() {
+                self.check_signals();
+                if self.the_window_resized {
+                    self.regenerate_screen();
+                    self.show_password_keys();
+                }
+                self.term.keep_secret_input();
+                self.show_password_prompt(question);
+                if self.term.wait_for_input(Duration::from_millis(250)) != Wait::Ready {
+                    continue;
+                }
+                let n = self.term.read_secret(&mut chunk);
+                let typed = self.absorb_secret(&mut reader, &chunk[..n], &mut password);
+                chunk.zeroize();
+                typed
+            } else {
+                self.show_password_prompt(question);
+                let typed = self.absorb_secret(&mut reader, &early, &mut password);
+                early.zeroize();
+                typed
+            };
             match typed {
                 Typed::Confirmed => {
                     break Some(std::mem::replace(&mut password, Zeroizing::new(Vec::new())));
@@ -656,7 +703,8 @@ impl Zu {
                 Typed::Pending => {}
             }
         };
-        self.term.end_secret_input(before);
+        self.term
+            .end_secret_input(before, result.is_none() && reader.pasting);
         self.term.curs_set(false);
         password.zeroize();
         drop(password);
@@ -700,14 +748,17 @@ const fn utf8_tail(lead: u8) -> usize {
 }
 
 impl SecretReader {
-    fn absorb(&mut self, bytes: &[u8], password: &mut Vec<u8>) -> Typed {
-        for &byte in bytes {
+    fn absorb(&mut self, bytes: &[u8], password: &mut Vec<u8>) -> (Typed, usize) {
+        for (i, &byte) in bytes.iter().enumerate() {
             let typed = self.take(byte, password);
+            if typed == Typed::Confirmed && byte == b'\r' && bytes.get(i + 1) == Some(&b'\n') {
+                return (typed, i + 2);
+            }
             if typed != Typed::Pending {
-                return typed;
+                return (typed, i + 1);
             }
         }
-        Typed::Pending
+        (Typed::Pending, bytes.len())
     }
 
     fn take(&mut self, byte: u8, password: &mut Vec<u8>) -> Typed {
@@ -720,10 +771,27 @@ impl SecretReader {
         }
         match byte {
             0x1B => self.escape.push(byte),
-            b'\n' if !self.pasting => return Typed::Confirmed,
+            b'\n' | b'\r' if !self.pasting => return Typed::Confirmed,
             0x03 => return Typed::Cancelled,
+            0x08 | 0x7F if !self.pasting => {
+                let mut end = password.len().saturating_sub(1);
+                while end > 0 && password[end] & 0xC0 == 0x80 {
+                    end -= 1;
+                }
+                password[end..].zeroize();
+                password.truncate(end);
+            }
+            0x15 if !self.pasting => password.zeroize(),
             0x00..=0x1F | 0x7F => self.rejected = true,
-            _ => password.push(byte),
+            _ => {
+                if password.len() == password.capacity() {
+                    let mut grown = Vec::with_capacity(password.capacity().max(16) * 2);
+                    grown.extend_from_slice(password);
+                    password.zeroize();
+                    *password = grown;
+                }
+                password.push(byte);
+            }
         }
         Typed::Pending
     }
@@ -799,7 +867,7 @@ mod tests {
         let mut password = Vec::new();
         let results = chunks
             .iter()
-            .map(|chunk| reader.absorb(chunk, &mut password))
+            .map(|chunk| reader.absorb(chunk, &mut password).0)
             .collect();
         (results, password, reader.rejected)
     }
@@ -884,10 +952,11 @@ mod tests {
                         }
                     })
                     .collect();
-                let typed = reader.absorb(&chunk, &mut password);
+                let (typed, used) = reader.absorb(&chunk, &mut password);
                 assert!(password.iter().all(|&b| !matches!(b, 0x00..=0x1F | 0x7F)));
+                assert!(used <= chunk.len());
                 match typed {
-                    Typed::Confirmed => assert!(chunk.contains(&b'\n')),
+                    Typed::Confirmed => assert!(matches!(chunk[used - 1], b'\n' | b'\r')),
                     Typed::Cancelled => assert!(chunk.contains(&0x03)),
                     Typed::Pending => continue,
                 }
@@ -898,9 +967,8 @@ mod tests {
 
     #[test]
     fn keys_and_sequences_are_left_out() {
-        let (results, password, rejected) = typed(&[
-            b"\x1BOA\x1B[A\x1B[1;5Ca\x01b\x7Fc\x1Bd\x1B\xC3\xA4e\x1B[M !!f\x1B[<0;5;5Mg\n",
-        ]);
+        let (results, password, rejected) =
+            typed(&[b"\x1BOA\x1B[A\x1B[1;5Ca\x01bc\x1Bd\x1B\xC3\xA4e\x1B[M !!f\x1B[<0;5;5Mg\n"]);
         assert_eq!(results, vec![Typed::Confirmed]);
         assert_eq!(password, b"abcefg");
         assert!(rejected);
@@ -921,10 +989,52 @@ mod tests {
         let mut password = Vec::new();
         assert_eq!(
             reader.absorb(b"\x1B[Oab\x1B[Ic\n", &mut password),
-            Typed::Confirmed
+            (Typed::Confirmed, 10)
         );
         assert_eq!(password, b"abc");
         assert_eq!(reader.focus, Some(true));
         assert!(!reader.rejected);
+    }
+
+    #[test]
+    fn typed_ahead_lines_leave_the_rest() {
+        let mut reader = SecretReader::default();
+        let mut password = Vec::new();
+        assert_eq!(
+            reader.absorb(b"erstes\rzweites\r", &mut password),
+            (Typed::Confirmed, 7)
+        );
+        assert_eq!(password, b"erstes");
+        for (input, used) in [(b"a\r\nb".as_slice(), 3), (b"a\nb", 2), (b"a\x03b", 2)] {
+            let mut reader = SecretReader::default();
+            assert_eq!(reader.absorb(input, &mut Vec::new()).1, used);
+        }
+        assert_eq!(
+            typed(&[b"\x1B[200~a\rb\x1B[201~\r"]),
+            (vec![Typed::Confirmed], b"ab".to_vec(), true)
+        );
+    }
+
+    #[test]
+    fn erase_and_kill_work_on_typed_ahead_keys() {
+        assert_eq!(typed(&[b"abX\x7F\r"]).1, b"ab");
+        assert_eq!(typed(&["aä\x08\r".as_bytes()]).1, b"a");
+        assert_eq!(typed(&[b"\x7F\x7Fz\r"]).1, b"z");
+        assert_eq!(typed(&[b"falsch\x15richtig\r"]).1, b"richtig");
+        assert_eq!(
+            typed(&[b"\x1B[200~a\x7Fb\x15c\x1B[201~\r"]),
+            (vec![Typed::Confirmed], b"abc".to_vec(), true)
+        );
+    }
+
+    #[test]
+    fn long_passwords_survive_growing() {
+        let long: Vec<u8> = (0..1000)
+            .map(|i| b'a' + u8::try_from(i % 26).unwrap())
+            .collect();
+        let mut reader = SecretReader::default();
+        let mut password = Vec::with_capacity(4);
+        assert_eq!(reader.absorb(&long, &mut password), (Typed::Pending, 1000));
+        assert_eq!(password, long);
     }
 }

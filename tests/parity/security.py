@@ -20,11 +20,37 @@ def check(name, cond, detail=""):
     print(("ok   " if cond else "FEHL ") + name + (" (" + detail + ")" if detail and not cond else ""))
 
 
+def screen():
+    return tm("capture-pane", "-p", "-t", "s")
+
+
+def wait_for(text, seconds=15):
+    end = time.time() + seconds
+    while time.time() < end:
+        if text in screen():
+            return True
+        time.sleep(0.1)
+    return False
+
+
+def wait_gone(pid, seconds=15):
+    end = time.time() + seconds
+    while time.time() < end:
+        try:
+            os.kill(pid, 0)
+        except ProcessLookupError:
+            return
+        time.sleep(0.1)
+
+
 def start(d, args, flags="-I"):
     env = "env -i HOME=%s TERM=xterm-256color LOCPATH=%s LANG=de_DE.UTF-8 PATH=/usr/bin:/bin" % (d, LOCPATH)
     tm("kill-session", "-t", "s")
     tm("new-session", "-d", "-s", "s", "-x", "80", "-y", "24", "cd %s && exec %s %s %s %s" % (d, env, ZU, flags, args))
-    time.sleep(0.8)
+    end = time.time() + 15
+    while time.time() < end and not screen().strip():
+        time.sleep(0.1)
+    time.sleep(0.3)
 
 
 def keys(*ks):
@@ -80,7 +106,7 @@ open(d + "/klar.txt", "w").write("Erste Zeile\n")
 
 start(d, "klar.txt")
 keys("L:" + MARK, "C-o", "Home", "C-k", "L:geheim.zu", "Enter", "L:j", "L:falsch", "C-u", "L:" + PW + "X", "BSpace", "Enter", "L:" + PW, "Enter")
-time.sleep(1.5)
+wait_for("geschrieben")
 pid = zu_pid()
 data = open(d + "/geheim.zu", "rb").read() if os.path.exists(d + "/geheim.zu") else b""
 check("Datei gespeichert", len(data) > 0)
@@ -98,10 +124,10 @@ for name in os.listdir(d):
         check("keine weitere Datei: " + name, False)
 
 keys("L:NACHTRAG")
-time.sleep(0.3)
+wait_for("NACHTRAG")
 if pid:
     os.kill(pid, signal.SIGTERM)
-    time.sleep(1.5)
+    wait_gone(pid)
 save = d + "/geheim.zu.save"
 sdata = open(save, "rb").read() if os.path.exists(save) else b""
 check("Notsicherung bei SIGTERM angelegt", len(sdata) > 0)
@@ -114,11 +140,11 @@ os.makedirs(d)
 open(d + "/klar.txt", "w").write("Erste Zeile\n")
 start(d, "klar.txt")
 keys("L:" + MARK)
-time.sleep(0.3)
+wait_for(MARK)
 pid = zu_pid()
 if pid:
     os.kill(pid, signal.SIGHUP)
-    time.sleep(1.5)
+    wait_gone(pid)
 files = sorted(os.listdir(d))
 check("ohne Passwort keine Notsicherung", files == ["klar.txt"], str(files))
 check("Original unverändert", open(d + "/klar.txt").read() == "Erste Zeile\n")
@@ -136,7 +162,8 @@ pid = zu_pid()
 if pid:
     before = memory_hits(pid, [GONE.encode()])[GONE.encode()]
     keys("C-x")
-    time.sleep(0.8)
+    wait_for("andere Datei")
+    time.sleep(0.3)
     after = memory_hits(pid, [GONE.encode()])[GONE.encode()]
     check("Klartext einer geschlossenen Datei aus dem Speicher getilgt", before > 0 and after == 0, "vorher %d, nachher %d" % (before, after))
 keys("C-x")
@@ -146,8 +173,9 @@ shutil.rmtree(d, ignore_errors=True)
 os.makedirs(d)
 open(d + "/code.rs", "w").write("// ein Kommentar\nfn main() {}\n")
 start(d, "code.rs")
-screen = tm("capture-pane", "-p", "-t", "s")
-check("„//“-Datei öffnet als Klartext", "// ein Kommentar" in screen and "Passwort" not in screen, screen.split("\n")[-4] if screen else "")
+wait_for("// ein Kommentar")
+shown = screen()
+check("„//“-Datei öffnet als Klartext", "// ein Kommentar" in shown and "Passwort" not in shown, shown.split("\n")[-4] if shown else "")
 keys("C-x")
 time.sleep(0.5)
 
@@ -157,14 +185,14 @@ NAME = "tagebuch-geheim-2026.zu"
 REST = "ZWEITEZEILE"
 start(d, "")
 keys("L:" + MARK, "C-o", "L:" + NAME, "Enter")
-time.sleep(0.5)
+wait_for("Neues Passwort")
 flags = tty_flags()
 check("Passwortabfrage im kanonischen Modus ohne Echo (Secure Input)", {"icanon", "-echo", "-isig"} <= flags, " ".join(sorted(flags)))
 for bad, hint in (("kurz", "Mindestens 15 Zeichen!"),
                   ("1Q2W3E4R5T6Y7U8I", "Zu verbreitet!"),
                   ("Tagebuch-Geheim-2026", "Gleicht dem Dateinamen!")):
     keys("L:" + bad, "Enter")
-    time.sleep(0.3)
+    wait_for(hint)
     footer = tm("capture-pane", "-p", "-t", "s").split("\n")[-4]
     check("Passwort abgelehnt: " + hint, hint + " Neues Passwort:" in footer, footer)
 hexed = lambda text: " ".join("%02x" % b for b in text.encode())
@@ -173,10 +201,10 @@ time.sleep(0.3)
 footer = tm("capture-pane", "-p", "-t", "s").split("\n")[-4]
 check("Zeilenumbruch in eingefügtem Passwort bestätigt nicht", "Neues Passwort:" in footer and "wiederholen" not in footer, footer)
 keys("Enter", "L:" + PW + REST, "Enter")
-time.sleep(1.5)
+wait_for("geschrieben")
 check("eingefügtes Passwort ohne Zeilenumbruch", decrypt(d + "/" + NAME, PW + REST) == (MARK + "\n").encode())
-screen = tm("capture-pane", "-p", "-t", "s")
-check("Rest der Einfügung nicht im Text", REST not in screen.split("\n")[2], screen.split("\n")[2])
+shown = screen()
+check("Rest der Einfügung nicht im Text", REST not in shown.split("\n")[2], shown.split("\n")[2])
 flags = tty_flags()
 check("nach der Abfrage wieder Rohmodus", {"-icanon", "-echo"} <= flags, " ".join(sorted(flags)))
 keys("C-x")
@@ -186,7 +214,7 @@ shutil.rmtree(d, ignore_errors=True)
 os.makedirs(d)
 start(d, "")
 keys("L:" + MARK, "C-o", "L:abbruch.zu", "Enter", "L:" + PW, "C-c")
-time.sleep(0.3)
+wait_for("Abgebrochen")
 footer = tm("capture-pane", "-p", "-t", "s").split("\n")[-4]
 check("^C bricht die Passwortabfrage ab", "Abgebrochen" in footer and not os.path.exists(d + "/abbruch.zu"), footer)
 flags = tty_flags()
@@ -198,8 +226,9 @@ shutil.rmtree(d, ignore_errors=True)
 os.makedirs(d)
 open(d + "/zurc", "w").write("set argonmemory 8\nset argonpasses 1\n")
 start(d, "schwach.zu", flags="-f " + d + "/zurc")
-keys("L:" + MARK, "C-o", "Enter", "L:" + PW, "Enter", "L:" + PW, "Enter")
-time.sleep(1.5)
+keys("L:" + MARK, "H:0f 0d " + hexed("falsch") + " 15 " + hexed(PW + "X") + " 7f 0d " + hexed(PW) + " 0d")
+wait_for("geschrieben")
+check("vorab getippte Tasten samt Korrekturen gehen nicht verloren", decrypt(d + "/schwach.zu") == (MARK + "\n").encode())
 keys("C-x")
 time.sleep(0.5)
 data = open(d + "/schwach.zu", "rb").read() if os.path.exists(d + "/schwach.zu") else b""
@@ -208,9 +237,9 @@ passes = int.from_bytes(data[6:10], "little") if len(data) > 14 else 0
 check("zu-Konfiguration kann Argon2 nicht unter das Minimum senken", memory >= 64 * 1024 and passes >= 3, "%d KiB, %d Durchläufe" % (memory, passes))
 start(d, "schwach.zu")
 keys("L:" + PW, "Enter")
-time.sleep(1.5)
-screen = tm("capture-pane", "-p", "-t", "s")
-check("so gespeicherte Datei öffnet wieder", MARK in screen, screen.split("\n")[-4] if screen else "")
+wait_for(MARK)
+shown = screen()
+check("so gespeicherte Datei öffnet wieder", MARK in shown, shown.split("\n")[-4] if shown else "")
 keys("C-x")
 time.sleep(0.5)
 

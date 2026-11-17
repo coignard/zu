@@ -246,6 +246,9 @@ impl Zu {
                 }
                 return;
             }
+            if !self.pending_input.is_empty() {
+                break;
+            }
             match self.term.wait_for_input(patience) {
                 Wait::Ready => {
                     if self.absorb_bytes() > 0 {

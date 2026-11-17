@@ -1932,7 +1932,9 @@ fn run(k: &mut Zu) {
         .ok()
         .filter(|t| !t.is_empty())
         .unwrap_or_else(|| "unknown".to_string());
-    let Some(ti) = crate::curses::terminfo::TermInfo::load(&term_name) else {
+    let Some(ti) = crate::curses::terminfo::TermInfo::load(&term_name)
+        .filter(|ti| !ti.flag("gn") && !ti.flag("hc"))
+    else {
         warn!("Fehler beim Öffnen des Terminals: {}.\n", term_name);
         std::process::exit(1);
     };

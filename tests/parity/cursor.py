@@ -1,6 +1,7 @@
 import os
 import re
 import shutil
+import signal
 import subprocess
 import sys
 import time
@@ -26,19 +27,74 @@ def record(prog, keys, opts, size):
     cmd = "cd %s && %s strace -ttt -e trace=write,read -e write=1 -s 65535 -o %s %s -I %s datei.txt" % (d, env, trace, prog, opts)
     tm("kill-server")
     time.sleep(0.2)
+    known = running(prog)
     tm("new-session", "-d", "-s", "f", "-x", str(size[0]), "-y", str(size[1]), cmd)
-    time.sleep(1.2)
+    pid = traced(prog, known)
+    settle(trace, pid, 1.2, lambda t: "write(1," in t)
     marks = []
     for k in keys:
+        consumed = len(READ.findall(text(trace)))
         marks.append(time.time())
         if k.startswith("L:"):
             tm("send-keys", "-t", "f", "-l", k[2:])
         else:
             tm("send-keys", "-t", "f", k)
-        time.sleep(0.5)
+        settle(trace, pid, 0.5, lambda t: len(READ.findall(t)) > consumed or "+++ exited" in t)
     tm("kill-server")
+    if pid:
+        try:
+            os.kill(pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
     time.sleep(0.3)
-    return open(trace, encoding="latin-1").read(), marks
+    return text(trace), marks
+
+
+READ = re.compile(r"read\(0, .*\) += [1-9]")
+
+
+def text(trace):
+    try:
+        return open(trace, encoding="latin-1").read()
+    except OSError:
+        return ""
+
+
+def running(prog):
+    found = subprocess.run(["pgrep", "-f", "^" + re.escape(prog) + " "], capture_output=True, text=True).stdout
+    return {int(p) for p in found.split()}
+
+
+def traced(prog, known):
+    end = time.time() + 20
+    while time.time() < end:
+        fresh = running(prog) - known
+        if fresh:
+            return max(fresh)
+        time.sleep(0.05)
+    return None
+
+
+def waiting(pid):
+    try:
+        state = open("/proc/%d/stat" % pid).read().rsplit(")", 1)[1].split()[0]
+        wchan = open("/proc/%d/wchan" % pid).read()
+    except (OSError, TypeError):
+        return True
+    return state == "S" and any(w in wchan for w in ("poll", "select", "wait_woken"))
+
+
+def settle(trace, pid, least, ready):
+    time.sleep(least)
+    end = time.time() + 30
+    while time.time() < end and not ready(text(trace)):
+        time.sleep(0.1)
+    before, calm = None, 0
+    while time.time() < end and calm < 5:
+        now = text(trace)
+        calm = calm + 1 if now == before and waiting(pid) else 0
+        before = now
+        time.sleep(0.1)
 
 
 def unescape(s):
@@ -48,7 +104,7 @@ def unescape(s):
 def writes(trace):
     out = []
     for line in trace.splitlines():
-        m = re.match(r"(?:\d+ +)?(\d+\.\d+) write\(1, \"(.*)\", \d+\) = \d+", line)
+        m = re.match(r"(?:\d+ +)?(\d+\.\d+) write\(1, \"(.*)\", \d+\) += \d+", line)
         if m:
             out.append((float(m.group(1)), unescape(m.group(2))))
     return out
