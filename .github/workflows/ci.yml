@@ -86,7 +86,7 @@ jobs:
     - name: Run tests under Miri
       env:
         MIRIFLAGS: -Zmiri-disable-isolation
-      run: cargo miri test --bin zu
+      run: cargo +nightly miri test --bin zu
 
   deny:
     name: Deny

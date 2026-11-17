@@ -1119,6 +1119,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(target_os = "linux")]
     #[cfg_attr(miri, ignore)]
     fn regex_errors_are_german() {
         assert_eq!(

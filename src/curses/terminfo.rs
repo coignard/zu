@@ -1093,6 +1093,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(target_os = "linux")]
     #[cfg_attr(miri, ignore)]
     fn formats_match_glibc_printf() {
         let values = [0, 1, -1, 7, 255, -123, 3054, i32::MAX, i32::MIN];
