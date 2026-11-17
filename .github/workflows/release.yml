@@ -41,7 +41,7 @@ jobs:
         with:
           bin: zu
           target: ${{ matrix.target }}
-          include: LICENSE,README,LICENSES
+          include: LICENSE,LICENSE.ncurses,LICENSE.SecLists,README
           checksum: sha256
           all-features: false
           token: ${{ secrets.GITHUB_TOKEN }}
