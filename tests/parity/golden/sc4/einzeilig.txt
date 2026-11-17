@@ -1,0 +1,11 @@
+abc
+CURSOR 3,0 sichtbar=1
+
+
+ 日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+CURSOR 66,0 sichtbar=0
+
+
+ Zu ist ein Nachbau von GNU zu, der Dateien verschlüsselt speichert. Es
+CURSOR 0,0 sichtbar=0
+

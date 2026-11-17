@@ -1,0 +1,80 @@
+Terminal „dumb“ kann den Cursor nicht positionieren.
+ENDE=1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CURSOR 0,2 sichtbar=1
+
+
+Terminal „dumb“ kann den Cursor nicht positionieren.
+ENDE=1
+x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CURSOR 1,2 sichtbar=1
+
+
+Terminal „dumb“ kann den Cursor nicht positionieren.
+ENDE=1
+x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CURSOR 1,2 sichtbar=1
+

@@ -1,0 +1,53 @@
+Fehler beim Öffnen des Terminals: unknown.
+ENDE=1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CURSOR 0,2 sichtbar=1
+
+
+Fehler beim Öffnen des Terminals: unknown.
+ENDE=1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CURSOR 0,2 sichtbar=1
+

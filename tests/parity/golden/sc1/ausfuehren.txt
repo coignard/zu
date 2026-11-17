@@ -1,0 +1,80 @@
+ datei.txt
+ein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi abc def g>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell Hund [qux>
+Auszuführender Befehl:
+^G Hilfe            ^P Älter            M-F Neuer Puffer    ^V Bis Ende ausschne
+^C Abbrechen        ^N Neuer            ^J Kompl. Ausr.     ^Z In den Hintergrun
+CURSOR 23,21 sichtbar=1
+
+
+ datei.txt Verändert
+hallo welt
+ein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi abc def g>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+
+                              [ 1 Zeile gelesen ]
+^G Hilfe     ^O Speichern ^F Wo ist    ^K Ausschneid^T Ausführen ^C Position
+^X Beenden   ^R Öffnen    ^\ Ersetzen  ^U Einfügen  ^J Ausrichten^/ Zu Zeile
+CURSOR 0,2 sichtbar=1
+
+
+ datei.txt
+ein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi abc def g>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell Hund [qux>
+                     [ Einfügung wurde rückgängig gemacht ]
+^G Hilfe     ^O Speichern ^F Wo ist    ^K Ausschneid^T Ausführen ^C Position
+^X Beenden   ^R Öffnen    ^\ Ersetzen  ^U Einfügen  ^J Ausrichten^/ Zu Zeile
+CURSOR 0,1 sichtbar=1
+

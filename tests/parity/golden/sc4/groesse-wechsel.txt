@@ -1,0 +1,83 @@
+ datei.txt
+
+    oder oder [qux] nicht Übung Hund Wörterbuch K>
+Übung Haus Hund die Straße テスト und Baum
+        ein Hund das
+        ein blau schnell
+        blau schnell [qux]
+
+^G Hilfe    ^O Speichern^F Wo ist   ^K Ausschneide
+^X Beenden  ^R Öffnen   ^\ Ersetzen ^U Einfügen
+CURSOR 0,1 sichtbar=1
+
+
+ datei.txt
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell Hund [qux] {baz} da>
+Übung Haus Hund die Straße テスト und Baum
+        ein Hund das
+        ein blau schnell
+        blau schnell [qux]
+  {baz} ein läuft Baum das über Baum läuft {baz} läuft der Hund Wörterbuch über
+  der Baum eine blau nicht Übung Wörterbuch oder
+    Übung foo(bar) {baz}
+
+        ein ein ein Haus Hund foo(bar) ein die Straße das Straße Katze über Haus oder Übu>
+  nicht Übung nicht
+Haus Hund Katze Hund Hund und das Baum Haus 日本語 oder 日本語 schnell Hund
+    der Straße grün
+[qux] blau der テスト grün und foo(bar) das
+    nicht über nicht テスト läuft blau blau テスト
+  foo(bar) läuft Übung テスト Straße läuft ein 日本語 läuft Straße grün Hund nicht 日本語>
+        Straße oder Straße
+    Übung der Hund foo(bar) nicht foo(bar) das {baz} Haus ein [qux] テスト Straße Hund
+        foo(bar) oder das
+        ein 日本語 das 日本語 über über Baum der Baum Wörterbuch Katze foo(bar) Baum Übung
+        {baz} nicht Baum blau blau Baum der der 日本語 foo(bar) Haus grün 日本語 Baum ein>
+
+    grün eine grün Baum blau Baum grün grün der Katze テスト über Übung der
+Baum Hund Übung
+
+Suche: Hund
+^G Hilfe              M-C Groß/Klein        M-B Rückwärts         ^P Älter
+^C Abbrechen          M-R Reg. Ausdruck     ^R Ersetzen           ^N Neuer
+CURSOR 11,27 sichtbar=1
+
+
+ datei.txt
+<r oder [qux] nicht Übung Hun>
+
+^G Hilfe  ^O Speiche^F Wo ist
+^X Beenden^R Öffnen ^\ Ersetze
+CURSOR 26,1 sichtbar=1
+
+
+ Haupt-Hilfe für Zu
+
+ Zu ist ein Nachbau von GNU zu, der Dateien verschlüsselt
+ speichert. Es gibt vier Hauptbereiche: Die Titelzeile zeigt
+ die Version des Programms, den Namen der momentan
+ editierten Datei und ob die Datei verändert wurde oder
+ nicht. Das Hauptfenster enthält die zu bearbeitende Datei.
+ Die Statuszeile (die dritte Zeile von unten) zeigt wichtige
+ Meldungen. Die untersten zwei Zeilen listen die
+
+^L Auffrisch^F Wo ist   M-B Vorige  ^P Zeile zur^Y Seite zur
+^X Schließen^B Wo war   M-F Nächste ^N Zeile vor^V Seite vor
+CURSOR 0,1 sichtbar=0
+
+
+ datei.txt
+<r oder [qux] nicht Übung Hund Wörterbuch Katze das das sch>
+<aus Hund die Straße テスト und Baum
+< ein Hund das
+< ein blau schnell
+< blau schnell [qux]
+< ein läuft Baum das über Baum läuft {baz} läuft der Hund W>
+<aum eine blau nicht Übung Wörterbuch oder
+<ng foo(bar) {baz}
+
+^G Hilfe    ^O Speichern^F Wo ist   ^K Ausschnei^T Ausführen
+^X Beenden  ^R Öffnen   ^\ Ersetzen ^U Einfügen ^J Ausrichte
+CURSOR 26,1 sichtbar=1
+

@@ -1,0 +1,617 @@
+ Haupt-Hilfe für Zu
+
+ Zu ist ein Nachbau von GNU zu, der Dateien verschlüsselt speichert. Es
+ gibt vier Hauptbereiche: Die Titelzeile zeigt die Version des Programms,
+ den Namen der momentan editierten Datei und ob die Datei verändert wurde
+ oder nicht. Das Hauptfenster enthält die zu bearbeitende Datei. Die
+ Statuszeile (die dritte Zeile von unten) zeigt wichtige Meldungen. Die
+ untersten zwei Zeilen listen die meistgebrauchten Tastenkombinationen von
+ Zu auf.
+
+ Tastenkombinationen werden wie folgt abgekürzt: Kombinationen mit der
+ Strg-Taste werden mit einem ^ ausgedrückt und können auch eingegeben
+ werden, indem Esc zweimal gedrückt wird. Escape-Sequenzen werden mit dem
+ Meta-Symbol (M) angegeben und können mit Alt, Cmd oder Meta eingegeben
+ werden, abhängig von Ihrer Tastatureinstellung. Zudem kann durch
+ zweimaliges Drücken von Esc und anschließender Eingabe einer
+ dreistelligen Zahl von 000 bis 255 das Zeichen mit dem entsprechenden
+ Wert eingegeben werden. Die folgenden Tasten(-kombinationen) sind im
+ Hauptfenster verfügbar. Alternative Tasten stehen in Klammern:
+
+^H     (F1)      Diese Hilfe anzeigen
+^Q     (F2)      Aktuellen Puffer schließen / Zu beenden
+^W     (F3)      Den aktuellen Puffer (oder den markierten Bereich) auf Festplatte speichern
+^O     (Ins)     Weitere Datei in den aktuellen (oder einen neuen) Puffer einfügen
+
+^F     (F6)      Nach einer Zeichenkette oder einem regulären Ausdruck vorwärts suchen
+^R     (^\)      Eine Zeichenkette oder einen regulären Ausdruck ersetzen
+^X     (^K)      Die aktuelle Zeile (oder den markierten Bereich) ausschneiden und in der Zwischenablage speichern
+^V     (^U)      Inhalt der Zwischenablage an der aktuellen Cursorposition einfügen
+
+^E               Funktion oder externen Befehl ausführen
+^J     (F4)      Absatz ausrichten
+
+^P     (F11)     Die aktuelle Cursorposition anzeigen
+^T     (^/)      Zu einer bestimmten Zeile und Spalte springen
+
+^Z     (M-U)     Letzte Operation rückgängig machen
+^Y     (M-E)     Rückgängig gemachte Operation wiederholen
+
+^A     (M-A)     Text beginnend an Cursorposition markieren
+^C     (M-6)     Die aktuelle Zeile (oder den markierten Bereich) kopieren und in der Zwischenablage speichern
+
+M-]              Zur passenden Klammer springen
+
+^B               Nach einer Zeichenkette oder einem regulären Ausdruck rückwärts suchen
+^D     (M-B)     Nächstes Vorkommen rückwärts suchen
+^G     (M-F)     Nächstes Vorkommen vorwärts suchen
+
+◂                Ein Zeichen rückwärts gehen
+▸                Ein Zeichen vorwärts gehen
+^◂     (M-Space) Ein Wort rückwärts gehen
+^▸     (^Space)  Ein Wort vorwärts gehen
+Home             Zum Anfang der aktuellen Zeile springen
+End              Zum Ende der aktuellen Zeile springen
+M-<              Ansicht eine Tabulatorbreite nach links rollen
+M->              Ansicht eine Tabulatorbreite nach rechts rollen
+
+▴                Zur vorhergehenden Zeile gehen
+▾                Zur folgenden Zeile gehen
+M-▴    (M--)     Eine Zeile hochrollen, ohne den Cursor im Text zu bewegen
+M-▾    (M-+)     Eine Zeile hinunterrollen, ohne den Cursor im Text zu bewegen
+
+^▴     (M-7)     Zum vorhergehenden Textblock gehen
+^▾     (M-8)     Zum folgenden Textblock gehen
+M-(    (M-9)     Zum Anfang des aktuellen Absatzes springen; dann des vorigen Absatzes
+M-)    (M-0)     Hinter das Ende des aktuellen Absatzes springen; dann des nächsten Absatzes
+
+M-Home           Zur ersten Zeile in dieser Ansicht springen
+M-End            Zur letzten Zeile in dieser Ansicht springen
+
+PgUp   (F7)      Eine Bildschirmseite hoch gehen
+PgDn   (F8)      Eine Bildschirmseite runter gehen
+M-\    (^Home)   Zur ersten Zeile der Datei springen
+M-/    (^End)    Zur letzten Zeile der Datei springen
+
+M-◂    (M-,)     Zum vorhergehenden Dateipuffer umschalten
+M-▸    (M-.)     Zum folgenden Dateipuffer umschalten
+
+^I     (Tab)     Einen Tabulator an der Cursorposition einfügen (oder die markierten Zeilen einrücken)
+^M     (Enter)   Einen Zeilenumbruch an der Cursorposition einfügen
+
+Bsp    (Sh-Del)  Zeichen links vom Cursor löschen
+Del              Zeichen an der Cursorposition löschen
+
+M-Bsp  (Sh-^Del) Vom Cursor rückwärts bis zum Beginn des Wortes ausschneiden
+^Del             Vom Cursor vorwärts bis zum Beginn des nächsten Wortes ausschneiden
+M-T              Vom Cursor bis zum Dateiende ausschneiden
+
+M-J              Die gesamte Datei ausrichten
+M-D              Die Zeilen, Wörter und Zeichen zählen
+M-V              Nächstes Zeichen direkt (nicht interpretiert) einfügen
+
+M-}              Die aktuelle Zeile oder die markierten Zeilen einrücken
+M-{    (Sh-Tab)  Die aktuelle Zeile oder die markierten Zeilen ausrücken
+
+M-3              Die aktuelle Zeile oder die markierten Zeilen auskommentieren oder Kommentierung aufheben
+^]               Versuchen, das aktuelle Wort zu vervollständigen
+
+^L Auffrischen      ^F Wo ist           ^D Vorige           ▴ Zeile zurück      PgUp Seite zurück   M-\ Erste Zeile
+^H Schließen        ^B Wo war           ^G Nächste          ▾ Zeile vor         PgDn Seite vor      M-/ Letzte Zeile
+CURSOR 0,1 sichtbar=0
+
+
+ Haupt-Hilfe für Zu
+M-3              Die aktuelle Zeile oder die markierten Zeilen auskommentieren oder Kommentierung aufheben
+^]               Versuchen, das aktuelle Wort zu vervollständigen
+
+M-:              Aufzeichnung eines Makros starten/stoppen
+M-;              Zuletzt aufgezeichnetes Makro ausführen
+
+M-Del            Die aktuelle Zeile oder den markierten Bereich verwerfen
+
+M-Ins  (M-")     Einen Anker in der aktuellen Zeile setzen oder daraus entfernen
+M-PgUp           Zurück zum nächstliegenden Anker springen
+M-PgDn (M-')     Vorwärts zum nächstliegenden Anker springen
+
+                 Den Editor in den Hintergrund schieben (zur Shell zurückkehren)
+                 Bildschirm auffrischen (neu zeichnen)
+
+^L               Zeile zentrieren, die den Cursor enthält
+M-%              Zeile, die den Cursor enthält, in die Mitte, dann nach oben, dann nach unten schieben
+
+^S               Datei ohne Nachfrage speichern
+
+                 Passwort ändern
+
+M-Z              Oberfläche verbergen aktivieren/deaktivieren
+M-X              Hilfe-Modus aktivieren/deaktivieren
+M-C              Cursorposition ständig anzeigen aktivieren/deaktivieren
+M-N              Zeilennummerierung aktivieren/deaktivieren
+
+M-P              Leerzeichenanzeige aktivieren/deaktivieren
+M-S              Überlange Zeilen fließend umbrechen aktivieren/deaktivieren
+
+M-L              Überlange Zeilen hart umbrechen aktivieren/deaktivieren
+M-O              Umwandlungen eingegebener Tabulatoren in Leerzeichen aktivieren/deaktivieren
+M-I              Automatische Einrückung aktivieren/deaktivieren
+
+M-H              Intelligente Pos1-Taste aktivieren/deaktivieren
+M-K              Bis Ende ausschneiden aktivieren/deaktivieren
+M-M              Mausunterstützung aktivieren/deaktivieren
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^L Auffrischen      ^F Wo ist           ^D Vorige           ▴ Zeile zurück      PgUp Seite zurück   M-\ Erste Zeile
+^H Schließen        ^B Wo war           ^G Nächste          ▾ Zeile vor         PgDn Seite vor      M-/ Letzte Zeile
+CURSOR 0,1 sichtbar=0
+
+
+ Haupt-Hilfe für Zu
+M-3              Die aktuelle Zeile oder die markierten Zeilen auskommentieren oder Kommentierung aufheben
+^]               Versuchen, das aktuelle Wort zu vervollständigen
+
+M-:              Aufzeichnung eines Makros starten/stoppen
+M-;              Zuletzt aufgezeichnetes Makro ausführen
+
+M-Del            Die aktuelle Zeile oder den markierten Bereich verwerfen
+
+M-Ins  (M-")     Einen Anker in der aktuellen Zeile setzen oder daraus entfernen
+M-PgUp           Zurück zum nächstliegenden Anker springen
+M-PgDn (M-')     Vorwärts zum nächstliegenden Anker springen
+
+                 Den Editor in den Hintergrund schieben (zur Shell zurückkehren)
+                 Bildschirm auffrischen (neu zeichnen)
+
+^L               Zeile zentrieren, die den Cursor enthält
+M-%              Zeile, die den Cursor enthält, in die Mitte, dann nach oben, dann nach unten schieben
+
+^S               Datei ohne Nachfrage speichern
+
+                 Passwort ändern
+
+M-Z              Oberfläche verbergen aktivieren/deaktivieren
+M-X              Hilfe-Modus aktivieren/deaktivieren
+M-C              Cursorposition ständig anzeigen aktivieren/deaktivieren
+M-N              Zeilennummerierung aktivieren/deaktivieren
+
+M-P              Leerzeichenanzeige aktivieren/deaktivieren
+M-S              Überlange Zeilen fließend umbrechen aktivieren/deaktivieren
+
+M-L              Überlange Zeilen hart umbrechen aktivieren/deaktivieren
+M-O              Umwandlungen eingegebener Tabulatoren in Leerzeichen aktivieren/deaktivieren
+M-I              Automatische Einrückung aktivieren/deaktivieren
+
+M-H              Intelligente Pos1-Taste aktivieren/deaktivieren
+M-K              Bis Ende ausschneiden aktivieren/deaktivieren
+M-M              Mausunterstützung aktivieren/deaktivieren
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^L Auffrischen      ^F Wo ist           ^D Vorige           ▴ Zeile zurück      PgUp Seite zurück   M-\ Erste Zeile
+^H Schließen        ^B Wo war           ^G Nächste          ▾ Zeile vor         PgDn Seite vor      M-/ Letzte Zeile
+CURSOR 0,37 sichtbar=0
+
+
+ Haupt-Hilfe für Zu
+M-3              Die aktuelle Zeile oder die markierten Zeilen auskommentieren oder Kommentierung aufheben
+^]               Versuchen, das aktuelle Wort zu vervollständigen
+
+M-:              Aufzeichnung eines Makros starten/stoppen
+M-;              Zuletzt aufgezeichnetes Makro ausführen
+
+M-Del            Die aktuelle Zeile oder den markierten Bereich verwerfen
+
+M-Ins  (M-")     Einen Anker in der aktuellen Zeile setzen oder daraus entfernen
+M-PgUp           Zurück zum nächstliegenden Anker springen
+M-PgDn (M-')     Vorwärts zum nächstliegenden Anker springen
+
+                 Den Editor in den Hintergrund schieben (zur Shell zurückkehren)
+                 Bildschirm auffrischen (neu zeichnen)
+
+^L               Zeile zentrieren, die den Cursor enthält
+M-%              Zeile, die den Cursor enthält, in die Mitte, dann nach oben, dann nach unten schieben
+
+^S               Datei ohne Nachfrage speichern
+
+                 Passwort ändern
+
+M-Z              Oberfläche verbergen aktivieren/deaktivieren
+M-X              Hilfe-Modus aktivieren/deaktivieren
+M-C              Cursorposition ständig anzeigen aktivieren/deaktivieren
+M-N              Zeilennummerierung aktivieren/deaktivieren
+
+M-P              Leerzeichenanzeige aktivieren/deaktivieren
+M-S              Überlange Zeilen fließend umbrechen aktivieren/deaktivieren
+
+M-L              Überlange Zeilen hart umbrechen aktivieren/deaktivieren
+M-O              Umwandlungen eingegebener Tabulatoren in Leerzeichen aktivieren/deaktivieren
+M-I              Automatische Einrückung aktivieren/deaktivieren
+
+M-H              Intelligente Pos1-Taste aktivieren/deaktivieren
+M-K              Bis Ende ausschneiden aktivieren/deaktivieren
+M-M              Mausunterstützung aktivieren/deaktivieren
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^L Auffrischen      ^F Wo ist           ^D Vorige           ▴ Zeile zurück      PgUp Seite zurück   M-\ Erste Zeile
+^H Schließen        ^B Wo war           ^G Nächste          ▾ Zeile vor         PgDn Seite vor      M-/ Letzte Zeile
+CURSOR 0,37 sichtbar=0
+
+
+ Haupt-Hilfe für Zu
+M-3              Die aktuelle Zeile oder die markierten Zeilen auskommentieren oder Kommentierung aufheben
+^]               Versuchen, das aktuelle Wort zu vervollständigen
+
+M-:              Aufzeichnung eines Makros starten/stoppen
+M-;              Zuletzt aufgezeichnetes Makro ausführen
+
+M-Del            Die aktuelle Zeile oder den markierten Bereich verwerfen
+
+M-Ins  (M-")     Einen Anker in der aktuellen Zeile setzen oder daraus entfernen
+M-PgUp           Zurück zum nächstliegenden Anker springen
+M-PgDn (M-')     Vorwärts zum nächstliegenden Anker springen
+
+                 Den Editor in den Hintergrund schieben (zur Shell zurückkehren)
+                 Bildschirm auffrischen (neu zeichnen)
+
+^L               Zeile zentrieren, die den Cursor enthält
+M-%              Zeile, die den Cursor enthält, in die Mitte, dann nach oben, dann nach unten schieben
+
+^S               Datei ohne Nachfrage speichern
+
+                 Passwort ändern
+
+M-Z              Oberfläche verbergen aktivieren/deaktivieren
+M-X              Hilfe-Modus aktivieren/deaktivieren
+M-C              Cursorposition ständig anzeigen aktivieren/deaktivieren
+M-N              Zeilennummerierung aktivieren/deaktivieren
+
+M-P              Leerzeichenanzeige aktivieren/deaktivieren
+M-S              Überlange Zeilen fließend umbrechen aktivieren/deaktivieren
+
+M-L              Überlange Zeilen hart umbrechen aktivieren/deaktivieren
+M-O              Umwandlungen eingegebener Tabulatoren in Leerzeichen aktivieren/deaktivieren
+M-I              Automatische Einrückung aktivieren/deaktivieren
+
+M-H              Intelligente Pos1-Taste aktivieren/deaktivieren
+M-K              Bis Ende ausschneiden aktivieren/deaktivieren
+M-M              Mausunterstützung aktivieren/deaktivieren
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^L Auffrischen      ^F Wo ist           ^D Vorige           ▴ Zeile zurück      PgUp Seite zurück   M-\ Erste Zeile
+^H Schließen        ^B Wo war           ^G Nächste          ▾ Zeile vor         PgDn Seite vor      M-/ Letzte Zeile
+CURSOR 0,37 sichtbar=0
+
+
+ Haupt-Hilfe für Zu
+M-3              Die aktuelle Zeile oder die markierten Zeilen auskommentieren oder Kommentierung aufheben
+^]               Versuchen, das aktuelle Wort zu vervollständigen
+
+M-:              Aufzeichnung eines Makros starten/stoppen
+M-;              Zuletzt aufgezeichnetes Makro ausführen
+
+M-Del            Die aktuelle Zeile oder den markierten Bereich verwerfen
+
+M-Ins  (M-")     Einen Anker in der aktuellen Zeile setzen oder daraus entfernen
+M-PgUp           Zurück zum nächstliegenden Anker springen
+M-PgDn (M-')     Vorwärts zum nächstliegenden Anker springen
+
+                 Den Editor in den Hintergrund schieben (zur Shell zurückkehren)
+                 Bildschirm auffrischen (neu zeichnen)
+
+^L               Zeile zentrieren, die den Cursor enthält
+M-%              Zeile, die den Cursor enthält, in die Mitte, dann nach oben, dann nach unten schieben
+
+^S               Datei ohne Nachfrage speichern
+
+                 Passwort ändern
+
+M-Z              Oberfläche verbergen aktivieren/deaktivieren
+M-X              Hilfe-Modus aktivieren/deaktivieren
+M-C              Cursorposition ständig anzeigen aktivieren/deaktivieren
+M-N              Zeilennummerierung aktivieren/deaktivieren
+
+M-P              Leerzeichenanzeige aktivieren/deaktivieren
+M-S              Überlange Zeilen fließend umbrechen aktivieren/deaktivieren
+
+M-L              Überlange Zeilen hart umbrechen aktivieren/deaktivieren
+M-O              Umwandlungen eingegebener Tabulatoren in Leerzeichen aktivieren/deaktivieren
+M-I              Automatische Einrückung aktivieren/deaktivieren
+
+M-H              Intelligente Pos1-Taste aktivieren/deaktivieren
+M-K              Bis Ende ausschneiden aktivieren/deaktivieren
+M-M              Mausunterstützung aktivieren/deaktivieren
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^L Auffrischen      ^F Wo ist           ^D Vorige           ▴ Zeile zurück      PgUp Seite zurück   M-\ Erste Zeile
+^H Schließen        ^B Wo war           ^G Nächste          ▾ Zeile vor         PgDn Seite vor      M-/ Letzte Zeile
+CURSOR 0,37 sichtbar=0
+

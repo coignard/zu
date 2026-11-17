@@ -1,0 +1,5 @@
+datei.txt Verändert
+abc
+122 Zeilen gelesen (
+CURSOR 3,1 sichtbar=1
+

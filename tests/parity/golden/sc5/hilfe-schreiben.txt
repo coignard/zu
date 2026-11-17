@@ -1,0 +1,205 @@
+ Hilfetext für „Datei schreiben“
+
+ Geben Sie den Namen ein, unter dem Sie die momentane Datei speichern
+ wollen, und drücken Sie die Eingabetaste. Die Datei wird verschlüsselt.
+ Fehlt ein Passwort, wird es abgefragt.
+
+ Wenn Sie Text markiert haben, so werden Sie gefragt, ob Sie nur den
+ ausgewählten Teil des Textes in eine separate Datei schreiben wollen. Um
+ die Gefahr zu minimieren, dass eine Datei mit einem Teil von ihr selbst
+ überschrieben wird, ist der aktuelle Dateiname in diesem Modus nicht die
+ Vorgabe.
+
+ Die folgenden Funktionstasten sind im Datei-Schreiben-Modus verfügbar:
+
+^G     (F1)      Diese Hilfe anzeigen
+^C               Funktion abbrechen
+
+M-D              Schreiben im DOS-Format umschalten
+M-B              Sicherung existierender Dateien beim Speichern umschalten
+M-A              Anhängen umschalten
+M-P              Vorn-Anfügen umschalten
+
+M-K              Passwort ändern
+
+^Q               Puffer schließen, ohne zu speichern
+
+^T               Zum Dateibrowser gehen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^L Auffrischen      ^F Wo ist           M-B Vorige          ^P Zeile zurück     ^Y Seite zurück     M-\ Erste Zeile
+^X Schließen        ^B Wo war           M-F Nächste         ^N Zeile vor        ^V Seite vor        M-/ Letzte Zeile
+CURSOR 0,1 sichtbar=0
+
+
+ Hilfetext für „Datei schreiben“
+
+ Geben Sie den Namen ein, unter dem Sie die momentane Datei speichern
+ wollen, und drücken Sie die Eingabetaste. Die Datei wird verschlüsselt.
+ Fehlt ein Passwort, wird es abgefragt.
+
+ Wenn Sie Text markiert haben, so werden Sie gefragt, ob Sie nur den
+ ausgewählten Teil des Textes in eine separate Datei schreiben wollen. Um
+ die Gefahr zu minimieren, dass eine Datei mit einem Teil von ihr selbst
+ überschrieben wird, ist der aktuelle Dateiname in diesem Modus nicht die
+ Vorgabe.
+
+ Die folgenden Funktionstasten sind im Datei-Schreiben-Modus verfügbar:
+
+^G     (F1)      Diese Hilfe anzeigen
+^C               Funktion abbrechen
+
+M-D              Schreiben im DOS-Format umschalten
+M-B              Sicherung existierender Dateien beim Speichern umschalten
+M-A              Anhängen umschalten
+M-P              Vorn-Anfügen umschalten
+
+M-K              Passwort ändern
+
+^Q               Puffer schließen, ohne zu speichern
+
+^T               Zum Dateibrowser gehen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^L Auffrischen      ^F Wo ist           M-B Vorige          ^P Zeile zurück     ^Y Seite zurück     M-\ Erste Zeile
+^X Schließen        ^B Wo war           M-F Nächste         ^N Zeile vor        ^V Seite vor        M-/ Letzte Zeile
+CURSOR 0,1 sichtbar=0
+

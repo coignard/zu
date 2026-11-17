@@ -1,0 +1,53 @@
+ ro.txt Verändert
+xnur lesen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Neues Passwort:
+Enter Bestätigen^U Eingabe löschen
+^C Abbrechen    Bsp Zeichen löschen
+CURSOR 16,21 sichtbar=1
+
+
+ ro.txt Verändert
+xnur lesen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                [ Abgebrochen ]
+^G Hilfe     ^O Speichern ^F Wo ist    ^K Ausschneid^T Ausführen ^C Position
+^X Beenden   ^R Öffnen    ^\ Ersetzen  ^U Einfügen  ^J Ausrichten^/ Zu Zeile
+CURSOR 1,1 sichtbar=1
+

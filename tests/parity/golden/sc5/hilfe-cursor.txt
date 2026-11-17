@@ -1,0 +1,134 @@
+ Haupt-Hilfe für Zu
+
+ Zu ist ein Nachbau von GNU zu, der Dateien verschlüsselt speichert. Es
+ gibt vier Hauptbereiche: Die Titelzeile zeigt die Version des Programms,
+ den Namen der momentan editierten Datei und ob die Datei verändert wurde
+ oder nicht. Das Hauptfenster enthält die zu bearbeitende Datei. Die
+ Statuszeile (die dritte Zeile von unten) zeigt wichtige Meldungen. Die
+ untersten zwei Zeilen listen die meistgebrauchten Tastenkombinationen von
+ Zu auf.
+
+ Tastenkombinationen werden wie folgt abgekürzt: Kombinationen mit der
+ Strg-Taste werden mit einem ^ ausgedrückt und können auch eingegeben
+ werden, indem Esc zweimal gedrückt wird. Escape-Sequenzen werden mit dem
+ Meta-Symbol (M) angegeben und können mit Alt, Cmd oder Meta eingegeben
+ werden, abhängig von Ihrer Tastatureinstellung. Zudem kann durch
+ zweimaliges Drücken von Esc und anschließender Eingabe einer
+ dreistelligen Zahl von 000 bis 255 das Zeichen mit dem entsprechenden
+ Wert eingegeben werden. Die folgenden Tasten(-kombinationen) sind im
+ Hauptfenster verfügbar. Alternative Tasten stehen in Klammern:
+
+^G     (F1)      Diese Hilfe anzeigen
+
+^L Auffrische^F Wo ist    M-B Vorige   ^P Zeile zurü^Y Seite zurüM-\ Erste Zeile
+^X Schließen ^B Wo war    M-F Nächste  ^N Zeile vor ^V Seite vor M-/ Letzte Zeil
+CURSOR 0,1 sichtbar=1
+
+
+ Haupt-Hilfe für Zu
+
+ Zu ist ein Nachbau von GNU zu, der Dateien verschlüsselt speichert. Es
+ gibt vier Hauptbereiche: Die Titelzeile zeigt die Version des Programms,
+ den Namen der momentan editierten Datei und ob die Datei verändert wurde
+ oder nicht. Das Hauptfenster enthält die zu bearbeitende Datei. Die
+ Statuszeile (die dritte Zeile von unten) zeigt wichtige Meldungen. Die
+ untersten zwei Zeilen listen die meistgebrauchten Tastenkombinationen von
+ Zu auf.
+
+ Tastenkombinationen werden wie folgt abgekürzt: Kombinationen mit der
+ Strg-Taste werden mit einem ^ ausgedrückt und können auch eingegeben
+ werden, indem Esc zweimal gedrückt wird. Escape-Sequenzen werden mit dem
+ Meta-Symbol (M) angegeben und können mit Alt, Cmd oder Meta eingegeben
+ werden, abhängig von Ihrer Tastatureinstellung. Zudem kann durch
+ zweimaliges Drücken von Esc und anschließender Eingabe einer
+ dreistelligen Zahl von 000 bis 255 das Zeichen mit dem entsprechenden
+ Wert eingegeben werden. Die folgenden Tasten(-kombinationen) sind im
+ Hauptfenster verfügbar. Alternative Tasten stehen in Klammern:
+
+^G     (F1)      Diese Hilfe anzeigen
+
+^L Auffrische^F Wo ist    M-B Vorige   ^P Zeile zurü^Y Seite zurüM-\ Erste Zeile
+^X Schließen ^B Wo war    M-F Nächste  ^N Zeile vor ^V Seite vor M-/ Letzte Zeil
+CURSOR 0,3 sichtbar=1
+
+
+ Haupt-Hilfe für Zu
+
+^G     (F1)      Diese Hilfe anzeigen
+^X     (F2)      Aktuellen Puffer schließen / Zu beenden
+^O     (F3)      Den aktuellen Puffer (oder den markierten Bereich) auf
+                   Festplatte speichern
+^R     (Ins)     Weitere Datei in den aktuellen (oder einen neuen) Puffer
+                   einfügen
+
+^F     (^W)      Nach einer Zeichenkette oder einem regulären Ausdruck vorwärts
+                   suchen
+^\     (M-R)     Eine Zeichenkette oder einen regulären Ausdruck ersetzen
+^K     (F9)      Die aktuelle Zeile (oder den markierten Bereich) ausschneiden
+                   und in der Zwischenablage speichern
+^U     (F10)     Inhalt der Zwischenablage an der aktuellen Cursorposition
+                   einfügen
+
+^T               Funktion oder externen Befehl ausführen
+^J     (F4)      Absatz ausrichten
+
+^C     (F11)     Die aktuelle Cursorposition anzeigen
+
+^L Auffrische^F Wo ist    M-B Vorige   ^P Zeile zurü^Y Seite zurüM-\ Erste Zeile
+^X Schließen ^B Wo war    M-F Nächste  ^N Zeile vor ^V Seite vor M-/ Letzte Zeil
+CURSOR 0,3 sichtbar=1
+
+
+ Haupt-Hilfe für Zu
+^S               Datei ohne Nachfrage speichern
+
+                 Passwort ändern
+
+M-Z              Oberfläche verbergen aktivieren/deaktivieren
+M-X              Hilfe-Modus aktivieren/deaktivieren
+M-C              Cursorposition ständig anzeigen aktivieren/deaktivieren
+M-N              Zeilennummerierung aktivieren/deaktivieren
+
+M-P              Leerzeichenanzeige aktivieren/deaktivieren
+M-S              Überlange Zeilen fließend umbrechen aktivieren/deaktivieren
+
+M-L              Überlange Zeilen hart umbrechen aktivieren/deaktivieren
+M-O              Umwandlungen eingegebener Tabulatoren in Leerzeichen
+                   aktivieren/deaktivieren
+M-I              Automatische Einrückung aktivieren/deaktivieren
+
+M-H              Intelligente Pos1-Taste aktivieren/deaktivieren
+M-K              Bis Ende ausschneiden aktivieren/deaktivieren
+M-M              Mausunterstützung aktivieren/deaktivieren
+
+^L Auffrische^F Wo ist    M-B Vorige   ^P Zeile zurü^Y Seite zurüM-\ Erste Zeile
+^X Schließen ^B Wo war    M-F Nächste  ^N Zeile vor ^V Seite vor M-/ Letzte Zeil
+CURSOR 0,20 sichtbar=1
+
+
+ Haupt-Hilfe für Zu
+ Tastenkombinationen werden wie folgt abgekürzt: Kombinationen mit der
+ Strg-Taste werden mit einem ^ ausgedrückt und können auch eingegeben
+ werden, indem Esc zweimal gedrückt wird. Escape-Sequenzen werden mit dem
+ Meta-Symbol (M) angegeben und können mit Alt, Cmd oder Meta eingegeben
+ werden, abhängig von Ihrer Tastatureinstellung. Zudem kann durch
+ zweimaliges Drücken von Esc und anschließender Eingabe einer
+ dreistelligen Zahl von 000 bis 255 das Zeichen mit dem entsprechenden
+ Wert eingegeben werden. Die folgenden Tasten(-kombinationen) sind im
+ Hauptfenster verfügbar. Alternative Tasten stehen in Klammern:
+
+^G     (F1)      Diese Hilfe anzeigen
+^X     (F2)      Aktuellen Puffer schließen / Zu beenden
+^O     (F3)      Den aktuellen Puffer (oder den markierten Bereich) auf
+                   Festplatte speichern
+^R     (Ins)     Weitere Datei in den aktuellen (oder einen neuen) Puffer
+                   einfügen
+
+^F     (^W)      Nach einer Zeichenkette oder einem regulären Ausdruck vorwärts
+                   suchen
+^\     (M-R)     Eine Zeichenkette oder einen regulären Ausdruck ersetzen
+                              [ Suche umbrechen ]
+^L Auffrische^F Wo ist    M-B Vorige   ^P Zeile zurü^Y Seite zurüM-\ Erste Zeile
+^X Schließen ^B Wo war    M-F Nächste  ^N Zeile vor ^V Seite vor M-/ Letzte Zeil
+CURSOR 23,11 sichtbar=1
+

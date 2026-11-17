@@ -1,0 +1,16 @@
+set tabsize 4
+set linenumbers
+set constantshow
+set matchbrackets "(<[{)>]}"
+set punct "!.?"
+set brackets "\"')>]}"
+set whitespace "»·"
+set indicator
+bind ^Y cut main
+bind M-J "{firstline}XY{lastline}" main
+unbind ^K main
+bind F5 help all
+set keycolor cyan
+set titlecolor bold,white,blue
+bind ^P nosuchfunc main
+set nonsense

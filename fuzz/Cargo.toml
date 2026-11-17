@@ -1,0 +1,47 @@
+[package]
+name = "zu-fuzz"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+argon2 = { version = "0.6.0", default-features = false, features = ["zeroize"] }
+chacha20poly1305 = { version = "0.11.0", default-features = false, features = ["alloc", "zeroize"] }
+ctutils = "0.4.8"
+getrandom = "0.4.3"
+libc = "0.2.191"
+libfuzzer-sys = "0.4.13"
+zeroize = "1.9.1"
+
+[[bin]]
+name = "header"
+path = "fuzz_targets/header.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "terminfo"
+path = "fuzz_targets/terminfo.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "capabilities"
+path = "fuzz_targets/capabilities.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "mouse"
+path = "fuzz_targets/mouse.rs"
+test = false
+doc = false
+bench = false
+
+[workspace]

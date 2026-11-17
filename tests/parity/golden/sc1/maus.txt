@@ -1,0 +1,80 @@
+ datei.txt Verändert
+ein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+M
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi abc def g>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell Hund [qux>
+                    [ 122 Zeilen gelesen (unverschlüsselt) ]
+^G Hilfe     ^O Speichern ^F Wo ist    ^K Ausschneid^T Ausführen ^C Position
+^X Beenden   ^R Öffnen    ^\ Ersetzen  ^U Einfügen  ^J Ausrichten^/ Zu Zeile
+CURSOR 1,4 sichtbar=1
+
+
+ datei.txt Verändert
+das eine eine
+M
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi abc def g>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell Hund [qux>
+Übung Haus Hund die Straße テスト und Baum
+        ein Hund das
+                    [ 122 Zeilen gelesen (unverschlüsselt) ]
+^G Hilfe     ^O Speichern ^F Wo ist    ^K Ausschneid^T Ausführen ^C Position
+^X Beenden   ^R Öffnen    ^\ Ersetzen  ^U Einfügen  ^J Ausrichten^/ Zu Zeile
+CURSOR 1,2 sichtbar=1
+
+
+ datei.txt Verändert
+ein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+M
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi abc def g>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell Hund [qux>
+In Datei schreiben: datei.txt
+^G Hilfe        M-D DOS-Format  M-A Anhängen    M-K Passwort    ^T Dateien …
+^C Abbrechen    M-B SicherungsdaM-P Vorn anfügen^Q Puffer verwerfen
+CURSOR 29,21 sichtbar=1
+

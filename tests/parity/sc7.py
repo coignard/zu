@@ -1,0 +1,17 @@
+SCENARIOS = [
+ ("columns-72", "", ["SNAP", "L:abc", "End", "SNAP"], {"env_extra": "COLUMNS=72"}),
+ ("lines-10", "", ["SNAP", "PageDown", "SNAP"], {"env_extra": "LINES=10"}),
+ ("columns-lines", "", ["SNAP"], {"env_extra": "COLUMNS=60 LINES=12"}),
+ ("columns-groesser", "", ["SNAP", "End", "SNAP"], {"env_extra": "COLUMNS=120"}),
+ ("columns-hex", "", ["SNAP"], {"env_extra": "COLUMNS=0x48"}),
+ ("columns-oktal", "", ["SNAP"], {"env_extra": "COLUMNS=0110"}),
+ ("columns-muell", "", ["SNAP"], {"env_extra": "COLUMNS=72abc"}),
+ ("columns-null", "", ["SNAP"], {"env_extra": "COLUMNS=0"}),
+ ("columns-negativ", "", ["SNAP"], {"env_extra": "COLUMNS=-5"}),
+ ("columns-resize", "", ["SNAP", "RESIZE:100x30", "SNAP", "RESIZE:60x16", "SNAP"], {"env_extra": "COLUMNS=72"}),
+ ("lines-resize", "", ["SNAP", "RESIZE:100x30", "SNAP"], {"env_extra": "LINES=12"}),
+ ("term-dumb", "", ["SNAP", "L:x", "SNAP"], {"term": "dumb"}),
+ ("term-unbekannt", "", ["SNAP"], {"term": "gibtsnicht-xyz"}),
+ ("term-leer", "", ["SNAP"], {"term": ""}),
+ ("term-fehlt", "", ["SNAP", "L:x", "Down", "SNAP"], {"term": None}),
+]

@@ -1,0 +1,16 @@
+SCENARIOS = [
+ ("suche-umlaut-gross", "", ["C-Home", "L:ÜBER STRASSE ÄRGER\n", "C-Home", "C-w", "L:über", "Enter", "SNAP", "C-w", "L:ärger", "Enter", "SNAP"]),
+ ("regex-punkt-mehrbyte", "", ["C-w", "M-r", "L:Stra.e", "Enter", "SNAP", "C-c"]),
+ ("regex-alpha-umlaut", "", ["C-Home", "L:äöü ÄÖÜ 123\n", "C-Home", "C-w", "M-r", "L:[[:alpha:]]+ [[:upper:]]+", "Enter", "SNAP", "C-c"]),
+ ("regex-ersetzen-icase", "", ["C-Home", "L:Über über ÜBER\n", "C-Home", "M-r", "M-r", "L:über", "Enter", "L:X", "Enter", "L:a", "SNAP"]),
+ ("wort-sprung-satzzeichen", "", ["C-Home", "L:€ und — ä, ß; ※ x\n", "C-Home", "C-Right", "SNAP", "C-Right", "SNAP", "C-Right", "SNAP", "C-Right", "SNAP", "C-Right", "SNAP"]),
+ ("wort-sprung-W", "-W", ["C-Home", "L:€ und — ä, ß; ※ x\n", "C-Home", "C-Right", "SNAP", "C-Right", "SNAP", "C-Right", "SNAP", "C-Right", "SNAP"]),
+ ("weicher-trennstrich", "", ["C-Home", "L:ab­cd ef​gh\n", "C-Home", "End", "SNAP", "Home", "Right", "Right", "Right", "SNAP"]),
+ ("breite-emoji-cjk", "", ["C-Home", "L:日本 😀 ✅ ☺ x\n", "C-Home", "End", "SNAP", "Left", "Left", "Left", "SNAP"]),
+ ("nicht-vergeben", "", ["C-Home", "L:a\U000e0080b͸c\n", "C-Home", "End", "SNAP", "Left", "Left", "SNAP"]),
+ ("ausrichten-umlaut", "-r 20", ["C-Home", "L:Ärger über Übel öfter größer äußerst übrigens\n", "Up", "C-j", "SNAP"]),
+ ("kombinierend-zeilenanfang", "", ["C-Home", "L:x\n\u0301abc\n\u0308\n", "C-Home", "SNAP", "Down", "SNAP"]),
+ ("kombinierend-mit-nummern", "-l", ["C-Home", "L:\u0301abc\n", "C-Home", "SNAP"]),
+ ("noncharacter", "", ["C-Home", "L:a\ufdd0b\uffffc\n", "C-Home", "SNAP"]),
+ ("vervollst-umlaut", "", ["C-Home", "L:Übermut Überfall Üb", "M-]", "SNAP"]),
+]

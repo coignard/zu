@@ -1,0 +1,142 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - 'assets/**'
+      - 'tests/**'
+      - 'Cargo.toml'
+      - 'Cargo.lock'
+      - 'codecov.yml'
+      - 'deny.toml'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - 'assets/**'
+      - 'tests/**'
+      - 'Cargo.toml'
+      - 'Cargo.lock'
+      - 'codecov.yml'
+      - 'deny.toml'
+      - '.github/workflows/**'
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    name: Test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-24.04-arm, macos-latest]
+        rust: [stable]
+    steps:
+    - uses: actions/checkout@v7
+    - uses: dtolnay/rust-toolchain@stable
+      with:
+        toolchain: ${{ matrix.rust }}
+    - name: Run tests
+      run: cargo test --verbose
+
+  clippy:
+    name: Clippy
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+    - uses: actions/checkout@v7
+    - uses: dtolnay/rust-toolchain@stable
+      with:
+        components: clippy
+    - name: Run clippy
+      run: cargo clippy --release --all-targets -- -D warnings
+    - name: Run clippy on the test decryptor
+      run: cargo clippy --release --manifest-path tests/parity/zudec/Cargo.toml -- -D warnings
+
+  fmt:
+    name: Format
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v7
+    - uses: dtolnay/rust-toolchain@stable
+      with:
+        components: rustfmt
+    - name: Check formatting
+      run: |
+        cargo fmt --all -- --check
+        cargo fmt --manifest-path tests/parity/zudec/Cargo.toml -- --check
+
+  miri:
+    name: Miri
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v7
+    - uses: dtolnay/rust-toolchain@nightly
+      with:
+        components: miri, rust-src
+    - name: Run tests under Miri
+      env:
+        MIRIFLAGS: -Zmiri-disable-isolation
+      run: cargo miri test --bin zu
+
+  deny:
+    name: Deny
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v7
+    - uses: EmbarkStudios/cargo-deny-action@v2
+
+  coverage:
+    name: Coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v7
+    - uses: dtolnay/rust-toolchain@stable
+    - name: Install cargo-llvm-cov
+      uses: taiki-e/install-action@cargo-llvm-cov
+    - name: Generate coverage
+      run: cargo llvm-cov --workspace --codecov --output-path codecov.json
+    - name: Upload to Codecov
+      uses: codecov/codecov-action@v7
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: codecov.json
+        fail_ci_if_error: true
+
+  parity:
+    name: Parity
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v7
+    - uses: dtolnay/rust-toolchain@stable
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y tmux screen strace locales language-pack-de-base libncurses-dev gettext
+    - name: Build GNU nano 9.3
+      working-directory: ${{ runner.temp }}
+      run: |
+        curl -fsSLO https://ftp.gnu.org/gnu/nano/nano-9.3.tar.xz
+        curl -fsSLO https://ftp.gnu.org/gnu/nano/nano-9.3.tar.xz.sig
+        curl -fsSLO https://ftp.gnu.org/gnu/gnu-keyring.gpg
+        gpgv --keyring "$PWD/gnu-keyring.gpg" nano-9.3.tar.xz.sig nano-9.3.tar.xz
+        tar -xJf nano-9.3.tar.xz
+        cd nano-9.3
+        ./configure --prefix="$RUNNER_TEMP/nano" --disable-speller --disable-libmagic
+        make -j"$(nproc)"
+        make install
+    - name: Build zu with overflow checks and the test decryptor
+      run: |
+        cargo build --release --config profile.release.overflow-checks=true
+        cargo build --release --manifest-path tests/parity/zudec/Cargo.toml
+    - name: Compare with GNU nano 9.3
+      run: sudo -E env "PATH=$PATH" NANO="$RUNNER_TEMP/nano/bin/nano" python3 tests/parity/run.py

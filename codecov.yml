@@ -1,0 +1,24 @@
+coverage:
+  precision: 1
+  round: down
+  range: 30..100
+  status:
+    project:
+      default:
+        target: auto
+        threshold: 1%
+        informational: true
+      crypto:
+        target: auto
+        threshold: 1%
+        paths:
+          - "src/crypto.rs"
+    patch:
+      default:
+        target: auto
+        threshold: 1%
+        informational: true
+ignore:
+  - "tests"
+comment:
+  require_changes: true

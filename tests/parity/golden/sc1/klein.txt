@@ -1,0 +1,10 @@
+ Haupt-Hilfe für Zu
+
+ Zu ist ein Nachbau von GNU zu, der
+ Dateien verschlüsselt speichert. Es
+ gibt vier Hauptbereiche: Die Titelzeile
+
+^L Auffris^F Wo ist M-B Vorige^P Zeile z
+^X Schließ^B Wo war M-F Nächst^N Zeile v
+CURSOR 0,1 sichtbar=0
+

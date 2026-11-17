@@ -1,0 +1,205 @@
+ Hilfetext für Externen Befehl
+
+ Dieses Menü erlaubt es, die Ausgabe eines externen Befehls, der in der
+ Shell ausgeführt wird, in den aktuellen Puffer einzufügen (oder in einen
+ neuen Puffer). Der Puffer kann nicht an einen Befehl weitergeleitet
+ werden. Falls Sie nur einen weiteren leeren Puffer benötigen, geben Sie
+ keinen Befehl ein.
+
+ Sie können auch die gesamte Datei ausrichten, ein großes Stück des
+ Puffers ausschneiden oder den Editor schlafen schicken.
+
+ Die folgenden Funktionstasten sind in dieser
+ Eingabeaufforderung verfügbar:
+
+^G     (F1)      Diese Hilfe anzeigen
+^C               Funktion abbrechen
+
+^P     (▴)       Den vorhergehenden Befehl erneut aufrufen
+^N     (▾)       Den nächsten Befehl erneut aufrufen
+
+M-F              Benutzung eines neuen Puffers umschalten
+^J               Die gesamte Datei ausrichten
+^V               Vom Cursor bis zum Dateiende ausschneiden
+
+^Z               Den Editor in den Hintergrund schieben (zur Shell zurückkehren)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^L Auffrischen      ^F Wo ist           M-B Vorige          ^P Zeile zurück     ^Y Seite zurück     M-\ Erste Zeile
+^X Schließen        ^B Wo war           M-F Nächste         ^N Zeile vor        ^V Seite vor        M-/ Letzte Zeile
+CURSOR 0,1 sichtbar=0
+
+
+ Hilfetext für Externen Befehl
+
+ Dieses Menü erlaubt es, die Ausgabe eines externen Befehls, der in der
+ Shell ausgeführt wird, in den aktuellen Puffer einzufügen (oder in einen
+ neuen Puffer). Der Puffer kann nicht an einen Befehl weitergeleitet
+ werden. Falls Sie nur einen weiteren leeren Puffer benötigen, geben Sie
+ keinen Befehl ein.
+
+ Sie können auch die gesamte Datei ausrichten, ein großes Stück des
+ Puffers ausschneiden oder den Editor schlafen schicken.
+
+ Die folgenden Funktionstasten sind in dieser
+ Eingabeaufforderung verfügbar:
+
+^G     (F1)      Diese Hilfe anzeigen
+^C               Funktion abbrechen
+
+^P     (▴)       Den vorhergehenden Befehl erneut aufrufen
+^N     (▾)       Den nächsten Befehl erneut aufrufen
+
+M-F              Benutzung eines neuen Puffers umschalten
+^J               Die gesamte Datei ausrichten
+^V               Vom Cursor bis zum Dateiende ausschneiden
+
+^Z               Den Editor in den Hintergrund schieben (zur Shell zurückkehren)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^L Auffrischen      ^F Wo ist           M-B Vorige          ^P Zeile zurück     ^Y Seite zurück     M-\ Erste Zeile
+^X Schließen        ^B Wo war           M-F Nächste         ^N Zeile vor        ^V Seite vor        M-/ Letzte Zeile
+CURSOR 0,1 sichtbar=0
+

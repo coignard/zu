@@ -1,0 +1,96 @@
+ Haupt-Hilfe für Zu
+ Zeile von unten) zeigt wichtige Meldungen. Die
+ untersten zwei Zeilen listen die meistgebrauchten
+ Tastenkombinationen von Zu auf.
+
+ Tastenkombinationen werden wie folgt abgekürzt:
+ Kombinationen mit der Strg-Taste werden mit einem
+ ^ ausgedrückt und können auch eingegeben werden,
+ indem Esc zweimal gedrückt wird. Escape-Sequenzen
+ werden mit dem Meta-Symbol (M) angegeben und
+ können mit Alt, Cmd oder Meta eingegeben werden,
+
+^L Auffrisch^F Wo ist   M-B Vorige  ^P Zeile zurüc
+^X Schließen^B Wo war   M-F Nächste ^N Zeile vor
+CURSOR 0,1 sichtbar=0
+
+
+ Haupt-Hilfe für Zu
+                   aktivieren/deaktivieren
+M-I              Automatische Einrückung
+                   aktivieren/deaktivieren
+
+M-H              Intelligente Pos1-Taste
+                   aktivieren/deaktivieren
+M-K              Bis Ende ausschneiden
+                   aktivieren/deaktivieren
+M-M              Mausunterstützung
+                   aktivieren/deaktivieren
+
+^L Auffrisch^F Wo ist   M-B Vorige  ^P Zeile zurüc
+^X Schließen^B Wo war   M-F Nächste ^N Zeile vor
+CURSOR 0,10 sichtbar=0
+
+
+ Haupt-Hilfe für Zu
+^C     (F11)     Die aktuelle Cursorposition
+                   anzeigen
+^/     (M-G)     Zu einer bestimmten Zeile und
+                   Spalte springen
+
+M-U              Letzte Operation rückgängig
+                   machen
+M-E              Rückgängig gemachte Operation
+                   wiederholen
+
+
+^L Auffrisch^F Wo ist   M-B Vorige  ^P Zeile zurüc
+^X Schließen^B Wo war   M-F Nächste ^N Zeile vor
+CURSOR 0,6 sichtbar=0
+
+
+ Haupt-Hilfe für Zu
+^C     (F11)     Die aktuelle Cursorposition anzeigen
+^/     (M-G)     Zu einer bestimmten Zeile und Spalte springen
+
+M-U              Letzte Operation rückgängig machen
+M-E              Rückgängig gemachte Operation wiederholen
+
+M-A    (^6)      Text beginnend an Cursorposition markieren
+M-6    (M-^)     Die aktuelle Zeile (oder den markierten Bereich)
+                   kopieren und in der Zwischenablage speichern
+
+M-]              Zur passenden Klammer springen
+
+^B     (^Q)      Nach einer Zeichenkette oder einem regulären Ausdruck
+                   rückwärts suchen
+M-B    (M-Q)     Nächstes Vorkommen rückwärts suchen
+M-F    (M-W)     Nächstes Vorkommen vorwärts suchen
+
+^L Auffrischen^F Wo ist     M-B Vorige    ^P Zeile zurüc^Y Seite zurüc
+^X Schließen  ^B Wo war     M-F Nächste   ^N Zeile vor  ^V Seite vor
+CURSOR 0,1 sichtbar=0
+
+
+ datei.txt
+ein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+
+^G Hilfe      ^O Speichern  ^F Wo ist     ^K Ausschneide^T Ausführen
+^X Beenden    ^R Öffnen     ^\ Ersetzen   ^U Einfügen   ^J Ausrichten
+CURSOR 0,1 sichtbar=1
+

@@ -1,0 +1,205 @@
+ Hilfetext für „Datei einfügen“
+
+ Geben Sie den Namen einer Datei ein, die an der momentanen Cursorposition
+ in den momentanen Dateipuffer eingefügt werden soll. Für eine
+ verschlüsselte Datei wird das Passwort abgefragt.
+
+ Wenn Sie mehrere Dateipuffer mit den Befehlszeilenoptionen -F oder
+ --newbuffer, mit der Tastenkombination Meta-F oder mittels einer
+ zurc-Datei eingeschaltet haben, so wird die Einfügeoperation die Datei in
+ einen separaten Puffer laden. (Benutzen Sie M-, und M-., um zwischen den
+ Dateipuffern umzuschalten.) Wenn Sie einen weiteren leeren Puffer
+ benötigen, drücken Sie einfach die Eingabetaste, ohne einen Dateinamen
+ einzugeben, oder geben Sie einen nichtexistierenden Dateinamen an.
+
+ Die folgenden Funktionstasten sind im Datei-Einfügen-Modus verfügbar:
+
+^G     (F1)      Diese Hilfe anzeigen
+^C               Funktion abbrechen
+
+M-F              Benutzung eines neuen Puffers umschalten
+M-N              Keine Umwandlung aus DOS-Format
+
+^X               Funktion oder externen Befehl ausführen
+
+^T               Zum Dateibrowser gehen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^L Auffrischen      ^F Wo ist           M-B Vorige          ^P Zeile zurück     ^Y Seite zurück     M-\ Erste Zeile
+^X Schließen        ^B Wo war           M-F Nächste         ^N Zeile vor        ^V Seite vor        M-/ Letzte Zeile
+CURSOR 0,1 sichtbar=0
+
+
+ Hilfetext für „Datei einfügen“
+
+ Geben Sie den Namen einer Datei ein, die an der momentanen Cursorposition
+ in den momentanen Dateipuffer eingefügt werden soll. Für eine
+ verschlüsselte Datei wird das Passwort abgefragt.
+
+ Wenn Sie mehrere Dateipuffer mit den Befehlszeilenoptionen -F oder
+ --newbuffer, mit der Tastenkombination Meta-F oder mittels einer
+ zurc-Datei eingeschaltet haben, so wird die Einfügeoperation die Datei in
+ einen separaten Puffer laden. (Benutzen Sie M-, und M-., um zwischen den
+ Dateipuffern umzuschalten.) Wenn Sie einen weiteren leeren Puffer
+ benötigen, drücken Sie einfach die Eingabetaste, ohne einen Dateinamen
+ einzugeben, oder geben Sie einen nichtexistierenden Dateinamen an.
+
+ Die folgenden Funktionstasten sind im Datei-Einfügen-Modus verfügbar:
+
+^G     (F1)      Diese Hilfe anzeigen
+^C               Funktion abbrechen
+
+M-F              Benutzung eines neuen Puffers umschalten
+M-N              Keine Umwandlung aus DOS-Format
+
+^X               Funktion oder externen Befehl ausführen
+
+^T               Zum Dateibrowser gehen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^L Auffrischen      ^F Wo ist           M-B Vorige          ^P Zeile zurück     ^Y Seite zurück     M-\ Erste Zeile
+^X Schließen        ^B Wo war           M-F Nächste         ^N Zeile vor        ^V Seite vor        M-/ Letzte Zeile
+CURSOR 0,1 sichtbar=0
+

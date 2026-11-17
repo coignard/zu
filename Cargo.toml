@@ -1,0 +1,51 @@
+[package]
+name = "zu"
+version = "0.1.0"
+authors = [
+    "René Coignard <contact@renecoignard.com>"
+]
+edition = "2024"
+rust-version = "1.100"
+license = "GPL-3.0-or-later"
+description = "Rust port of GNU nano for editing encrypted text files"
+homepage = "https://coignard.org/zu"
+repository = "https://github.com/coignard/zu"
+readme = "README.md"
+keywords = ["editor", "encryption", "argon2", "terminal"]
+categories = ["command-line-utilities", "text-editors", "cryptography"]
+exclude = [".github/*", "tests/parity/*"]
+publish = false
+
+[dependencies]
+argon2 = { version = "0.6.0", default-features = false, features = ["zeroize"] }
+chacha20poly1305 = { version = "0.11.0", default-features = false, features = ["alloc", "zeroize"] }
+ctutils = "0.4.8"
+getrandom = "0.4.3"
+libc = "0.2.191"
+zeroize = "1.9.1"
+
+[lints.rust]
+unsafe_op_in_unsafe_fn = "deny"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+nursery = { level = "warn", priority = -1 }
+cargo = { level = "warn", priority = -1 }
+
+[[bin]]
+name = "zu"
+path = "src/main.rs"
+
+[profile.dev.package.argon2]
+opt-level = 3
+
+[profile.dev.package.blake2]
+opt-level = 3
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
+panic = "unwind"
+opt-level = 3

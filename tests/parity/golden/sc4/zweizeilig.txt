@@ -1,0 +1,19 @@
+abc
+122 Zeilen gelesen (unverschlü
+CURSOR 3,0 sichtbar=1
+
+
+abc
+Suche:
+CURSOR 7,1 sichtbar=1
+
+
+<ber テスト oder Baum Hund ei>
+
+CURSOR 22,0 sichtbar=0
+
+
+<ber テスト oder Baum Hund ei>
+         [ Zu klein ]
+CURSOR 22,0 sichtbar=1
+

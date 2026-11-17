@@ -1,0 +1,80 @@
+ Haupt-Hilfe für Zu
+ gibt vier Hauptbereiche: Die Titelzeile zeigt die Version des Programms,
+ den Namen der momentan editierten Datei und ob die Datei verändert wurde
+ oder nicht. Das Hauptfenster enthält die zu bearbeitende Datei. Die
+ Statuszeile (die dritte Zeile von unten) zeigt wichtige Meldungen. Die
+ untersten zwei Zeilen listen die meistgebrauchten Tastenkombinationen von
+ Zu auf.
+
+ Tastenkombinationen werden wie folgt abgekürzt: Kombinationen mit der
+ Strg-Taste werden mit einem ^ ausgedrückt und können auch eingegeben
+ werden, indem Esc zweimal gedrückt wird. Escape-Sequenzen werden mit dem
+ Meta-Symbol (M) angegeben und können mit Alt, Cmd oder Meta eingegeben
+ werden, abhängig von Ihrer Tastatureinstellung. Zudem kann durch
+ zweimaliges Drücken von Esc und anschließender Eingabe einer
+ dreistelligen Zahl von 000 bis 255 das Zeichen mit dem entsprechenden
+ Wert eingegeben werden. Die folgenden Tasten(-kombinationen) sind im
+ Hauptfenster verfügbar. Alternative Tasten stehen in Klammern:
+
+^G     (F1)      Diese Hilfe anzeigen
+^X     (F2)      Aktuellen Puffer schließen / Zu beenden
+^O     (F3)      Den aktuellen Puffer (oder den markierten Bereich) auf
+
+^L Auffrische^F Wo ist    M-B Vorige   ^P Zeile zurü^Y Seite zurüM-\ Erste Zeile
+^X Schließen ^B Wo war    M-F Nächste  ^N Zeile vor ^V Seite vor M-/ Letzte Zeil
+CURSOR 0,1 sichtbar=0
+
+
+ Haupt-Hilfe für Zu
+ gibt vier Hauptbereiche: Die Titelzeile zeigt die Version des Programms,
+ den Namen der momentan editierten Datei und ob die Datei verändert wurde
+ oder nicht. Das Hauptfenster enthält die zu bearbeitende Datei. Die
+ Statuszeile (die dritte Zeile von unten) zeigt wichtige Meldungen. Die
+ untersten zwei Zeilen listen die meistgebrauchten Tastenkombinationen von
+ Zu auf.
+
+ Tastenkombinationen werden wie folgt abgekürzt: Kombinationen mit der
+ Strg-Taste werden mit einem ^ ausgedrückt und können auch eingegeben
+ werden, indem Esc zweimal gedrückt wird. Escape-Sequenzen werden mit dem
+ Meta-Symbol (M) angegeben und können mit Alt, Cmd oder Meta eingegeben
+ werden, abhängig von Ihrer Tastatureinstellung. Zudem kann durch
+ zweimaliges Drücken von Esc und anschließender Eingabe einer
+ dreistelligen Zahl von 000 bis 255 das Zeichen mit dem entsprechenden
+ Wert eingegeben werden. Die folgenden Tasten(-kombinationen) sind im
+ Hauptfenster verfügbar. Alternative Tasten stehen in Klammern:
+
+^G     (F1)      Diese Hilfe anzeigen
+^X     (F2)      Aktuellen Puffer schließen / Zu beenden
+^O     (F3)      Den aktuellen Puffer (oder den markierten Bereich) auf
+
+^L Auffrische^F Wo ist    M-B Vorige   ^P Zeile zurü^Y Seite zurüM-\ Erste Zeile
+^X Schließen ^B Wo war    M-F Nächste  ^N Zeile vor ^V Seite vor M-/ Letzte Zeil
+CURSOR 0,1 sichtbar=0
+
+
+ datei.txt
+ein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi abc def g>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell Hund [qux>
+
+^G Hilfe     ^O Speichern ^F Wo ist    ^K Ausschneid^T Ausführen ^C Position
+^X Beenden   ^R Öffnen    ^\ Ersetzen  ^U Einfügen  ^J Ausrichten^/ Zu Zeile
+CURSOR 0,1 sichtbar=1
+

@@ -1,0 +1,134 @@
+.../-home-user/a7a5959f-7a1e-5374-a187-01a7d337d7ad/scratchpad/runs/work/work-X/
+..          (höher)  bak         (Verz.)  bin.txt       95  B
+datei.txt      6 KB  dos.txt       18  B  lang.txt       8 KB
+ro.txt        10  B  zwei.txt      29  B
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^G Hilfe     ^/ Gehe zu Ve^F Wo ist    M-B Vorige   ◂ Zurück     ^P Zeile zurück
+^X Schließen ^L Auffrische^B Wo war    M-F Nächste  ▸ Vorwärts   ^N Zeile vor
+CURSOR 40,3 sichtbar=0
+
+
+ datei.txt Verändert
+xein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi abc def g>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell Hund [qux>
+In Datei schreiben: datei.txt
+^G Hilfe        M-D DOS-Format  M-A Anhängen    M-K Passwort    ^T Dateien …
+^C Abbrechen    M-B SicherungsdaM-P Vorn anfügen^Q Puffer verwerfen
+CURSOR 29,21 sichtbar=1
+
+
+ datei.txt Verändert
+xein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi abc def g>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell Hund [qux>
+In Datei schreiben: datei.txt
+^G Hilfe        M-D DOS-Format  M-A Anhängen    M-K Passwort    ^T Dateien …
+^C Abbrechen    M-B SicherungsdaM-P Vorn anfügen^Q Puffer verwerfen
+CURSOR 29,21 sichtbar=1
+
+
+ datei.txt Verändert
+xein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi abc def g>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell Hund [qux>
+In Datei schreiben: datei.txtzw
+^G Hilfe        M-D DOS-Format  M-A Anhängen    M-K Passwort    ^T Dateien …
+^C Abbrechen    M-B SicherungsdaM-P Vorn anfügen^Q Puffer verwerfen
+CURSOR 31,21 sichtbar=1
+
+
+ datei.txt Verändert
+xein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi abc def g>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell Hund [qux>
+                                [ Abgebrochen ]
+^G Hilfe     ^O Speichern ^F Wo ist    ^K Ausschneid^T Ausführen ^C Position
+^X Beenden   ^R Öffnen    ^\ Ersetzen  ^U Einfügen  ^J Ausrichten^/ Zu Zeile
+CURSOR 1,1 sichtbar=1
+

@@ -1,0 +1,107 @@
+ datei.txt
+ein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi abc def g>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell Hund [qux>
+Auswahl in Datei schreiben:
+^G Hilfe        M-D DOS-Format  M-A Anhängen    M-K Passwort    ^T Dateien …
+^C Abbrechen    M-B SicherungsdaM-P Vorn anfügen^Q Puffer verwerfen
+CURSOR 28,21 sichtbar=1
+
+
+ datei.txt
+ein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi abc def g>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell Hund [qux>
+Auswahl an Datei anhängen:
+^G Hilfe        M-D DOS-Format  M-A Anhängen    M-K Passwort    ^T Dateien …
+^C Abbrechen    M-B SicherungsdaM-P Vorn anfügen^Q Puffer verwerfen
+CURSOR 27,21 sichtbar=1
+
+
+ datei.txt
+ein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi abc def g>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell Hund [qux>
+Auswahl an Datei anhängen: zwei.txt
+^G Hilfe        M-D DOS-Format  M-A Anhängen    M-K Passwort    ^T Dateien …
+^C Abbrechen    M-B SicherungsdaM-P Vorn anfügen^Q Puffer verwerfen
+CURSOR 35,21 sichtbar=1
+
+
+ datei.txt
+ein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi abc def g>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund eine
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell Hund [qux>
+Auswahl an Datei anhängen: zwei.txt
+^G Hilfe        M-D DOS-Format  M-A Anhängen    M-K Passwort    ^T Dateien …
+^C Abbrechen    M-B SicherungsdaM-P Vorn anfügen^Q Puffer verwerfen
+CURSOR 35,21 sichtbar=1
+

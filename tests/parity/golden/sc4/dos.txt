@@ -1,0 +1,80 @@
+ dos.txt Verändert
+eins
+xzwei
+drei
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+In Datei schreiben [DOS-Format]: dos.txt
+^G Hilfe        M-D DOS-Format  M-A Anhängen    M-K Passwort    ^T Dateien …
+^C Abbrechen    M-B SicherungsdaM-P Vorn anfügen^Q Puffer verwerfen
+CURSOR 40,21 sichtbar=1
+
+
+ dos.txt Verändert
+eins
+xzwei
+drei
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+In Datei schreiben: dos.txt
+^G Hilfe        M-D DOS-Format  M-A Anhängen    M-K Passwort    ^T Dateien …
+^C Abbrechen    M-B SicherungsdaM-P Vorn anfügen^Q Puffer verwerfen
+CURSOR 27,21 sichtbar=1
+
+
+ dos.txt Verändert
+eins
+xzwei
+drei
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                [ Abgebrochen ]
+^G Hilfe     ^O Speichern ^F Wo ist    ^K Ausschneid^T Ausführen ^C Position
+^X Beenden   ^R Öffnen    ^\ Ersetzen  ^U Einfügen  ^J Ausrichten^/ Zu Zeile
+CURSOR 1,2 sichtbar=1
+

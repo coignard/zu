@@ -1,0 +1,97 @@
+ datei.txt
+ein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi a>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund >
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell H>
+                [ 122 Zeilen gelesen (unverschlüsselt) ]
+^G Hilfe      ^O Speichern  ^F Wo ist     ^K Ausschneide^T Ausführen
+^X Beenden    ^R Öffnen     ^\ Ersetzen   ^U Einfügen   ^J Ausrichten
+CURSOR 0,1 sichtbar=1
+
+
+ datei.txt
+ein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße nicht
+
+Eine sehr lange Zeile abc def ghi abc def ghi abc def ghi abc def ghi a>
+
+        {baz} blau eine
+        Wörterbuch Katze nicht und läuft über [qux] テスト
+Wörterbuch und grün
+  日本語 Katze und Übung das Haus grün eine über テスト oder Baum Hund >
+
+    oder oder [qux] nicht Übung Hund Wörterbuch Katze das das schnell H>
+Übung Haus Hund die Straße テスト und Baum
+        ein Hund das
+        ein blau schnell
+        blau schnell [qux]
+  {baz} ein läuft Baum das über Baum läuft {baz} läuft der Hund Wörterb>
+  der Baum eine blau nicht Übung Wörterbuch oder
+
+^G Hilfe      ^O Speichern  ^F Wo ist     ^K Ausschneide^T Ausführen
+^X Beenden    ^R Öffnen     ^\ Ersetzen   ^U Einfügen   ^J Ausrichten
+CURSOR 0,1 sichtbar=1
+
+
+ein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße ni
+cht
+
+^G Hilfe      ^O Speichern  ^F Wo ist     ^K Ausschneide^T A
+^XfBeenden    ^R Öffnen     ^\ Ersetzen   ^U Einfügen   ^J A
+usrichten
+CURSOR 0,1 sichtbar=1
+
+
+ein foo(bar) die das blau Haus nicht Wörterbuch
+
+das eine eine
+
+
+> zitiert eins
+> zitiert zwei zwei zwei
+> zitiert drei
+  eine Baum blau
+
+    {baz} über Haus Wörterbuch Wörterbuch foo(bar) Straße ni
+cht
+
+^G Hilfe      ^O Speichern  ^F Wo ist     ^K Ausschneide^T A
+^XfBeenden    ^R Öffnen     ^\ Ersetzen   ^U Einfügen   ^J A
+usrichten
+CURSOR 0,1 sichtbar=1
+
